@@ -6,13 +6,13 @@
 /*   By: gverhelp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:04:49 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/03/12 12:57:09 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/09/08 18:20:58 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	ft_start(t_data *data)
+void	ft_raycast(t_data *data)
 {
 	int	a;
 
@@ -31,18 +31,20 @@ void	ft_start(t_data *data)
 	}
 }
 
-int		main()
+int		main(int argc, char **argv)
 {
 	t_data	data;
 
+	argc = argc - 1 + 1;
 	ft_init_list(&data);
-	ft_init_list_2(&data);
+	ft_init_list2(&data);
+	ft_parsing(argv[1]);
 //	ft_readKeys(&data, );
 	data.mlx = mlx_init();
 	data.mlx_win = mlx_new_window(data.mlx, screenWidth, screenHeight, "Mon super carre!");
 	data.img = mlx_new_image(data.mlx, screenWidth, screenHeight);
 	data.addr = (int*)mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
-	ft_start(&data);
+	ft_raycast(&data);
 	mlx_put_image_to_window(data.mlx, data.mlx_win, data.img, 0, 0);
 	mlx_loop(data.mlx);
 	return (0);

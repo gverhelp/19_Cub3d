@@ -6,7 +6,7 @@
 #    By: gverhelp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/09 13:10:21 by gverhelp          #+#    #+#              #
-#    Updated: 2020/03/12 13:11:45 by gverhelp         ###   ########.fr        #
+#    Updated: 2020/09/08 18:24:47 by gverhelp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ MINILIBX_PATH = ./miniLibX
 SRCS = srcs/main.c \
 	   srcs/ft_init_struct.c \
 	   srcs/ft_raycasting.c \
+	   srcs/ft_parsing.c
 
 OBJS = ${SRCS:.c=.o}
 INCLUDE = cube3d.h

@@ -6,7 +6,7 @@
 /*   By: gverhelp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 14:15:25 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/03/10 15:23:22 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/09/08 18:59:57 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_init_list(t_data *data)
 	data->stepY = 0;
 }
 
-void	ft_init_list_2(t_data *data)
+void	ft_init_list2(t_data *data)
 {
 	data->hit = 0;
 	data->side = 0;
@@ -56,4 +56,16 @@ void	ft_init_list_2(t_data *data)
 	data->color_wall_e = 0;
 	data->color_wall_s = 0;
 	data->color_wall_n = 0;
+}
+
+void	ft_init_list_parsing(t_data2 *data2)
+{
+	data2->size = ft_strdup("");
+	data2->posN = ft_strdup("");
+	data2->posS = ft_strdup("");
+	data2->posE = ft_strdup("");
+	data2->posW = ft_strdup("");
+	data2->textS = ft_strdup("");
+	data2->textF = ft_strdup("");
+	data2->textC = ft_strdup("");
 }
