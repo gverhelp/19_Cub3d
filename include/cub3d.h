@@ -6,7 +6,7 @@
 /*   By: gverhelp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:39:55 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/09/08 19:05:23 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/09/09 18:30:46 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define screenWidth 1920
 # define screenHeight 1080
 
-typedef struct	s_data
+typedef struct	s_list
 {
 	void		*img;
 	void		*mlx;
@@ -66,35 +66,35 @@ typedef struct	s_data
 	float		deltaDistX;
 	float		deltaDistY;
 	float		perpWallDist;
-}				t_data;
+}				t_list;
 
-typedef struct	s_data2
+typedef struct	s_list2
 {
 	char		*size;
-	char		*posN;
-	char		*posS;
-	char		*posE;
-	char		*posW;
+	char		*textN;
 	char		*textS;
+	char		*textE;
+	char		*textW;
+	char		*textSprite;
 	char		*textF;
 	char		*textC;
-}				t_data2;
+}				t_list2;
 
-void			ft_raycast(t_data *data);
-void			ft_readKeys(t_data *data, char **argv);
-void			ft_calculate_ray_and_deltaDist(t_data *data, int a);
-void			ft_calculate_step_and_sideDist(t_data *data);
-void			ft_perform_dda(t_data *data);
-void			ft_calculate_dist(t_data *data);
-void			ft_calculate_height_wall(t_data *data);
-void			ft_init_colors(t_data *data);
-void			ft_verline(t_data *data, int a);
-void			ft_init_list(t_data *data);
-void			ft_init_list2(t_data *data);
-void			ft_init_list_parsing(t_data2 *data2);
-void			ft_whatsintext(t_data2 *data2, char *line);
-void			ft_whatsintext2(t_data2 *data2, char *line);
-void			ft_whatsintext3(t_data2 *data2, char *line);
+void			ft_raycast(t_list *list);
+void			ft_readKeys(t_list *list, char **argv);
+void			ft_calculate_ray_and_deltaDist(t_list *list, int a);
+void			ft_calculate_step_and_sideDist(t_list *list);
+void			ft_perform_dda(t_list *list);
+void			ft_calculate_dist(t_list *list);
+void			ft_calculate_height_wall(t_list *list);
+void			ft_init_colors(t_list *list);
+void			ft_verline(t_list *list, int a);
+void			ft_init_list(t_list *list);
+void			ft_init_list2(t_list *list);
+void			ft_init_list_parsing(t_list2 *list2);
+void			ft_whatstheconf(t_list2 *list2, char *line);
+void			ft_whatstheconf2(t_list2 *list2, char *line);
+void			ft_whatstheconf3(t_list2 *list2, char *line);
 int				ft_parsing(char *file);
 
 #endif
