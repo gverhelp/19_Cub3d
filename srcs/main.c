@@ -33,7 +33,7 @@ void	ft_raycast(t_list *list)
 
 int		ft_checkerror(int argc, char **argv, t_list *list)
 {
-	if (argc == 2)
+	if (argc >= 2)
 	{
 		if ((!(ft_strrchr(argv[1], '.'))) || (ft_strncmp(ft_strrchr(argv[1], '.'), ".cub\0", 5)))
 		{
