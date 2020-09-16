@@ -23,8 +23,8 @@
 
 # define mapWidth 24
 # define mapHeight 24
-# define screenWidth 1920
-# define screenHeight 1080
+# define screenWidth 800
+# define screenHeight 400
 
 typedef struct	s_list
 {
@@ -50,6 +50,7 @@ typedef struct	s_list
 	int			color_wall_e;
 	int			color_wall_s;
 	int			color_wall_n;
+	int			savebmp;
 	float		posX;
 	float		posY;
 	float		dirX;
@@ -66,10 +67,8 @@ typedef struct	s_list
 	float		deltaDistX;
 	float		deltaDistY;
 	float		perpWallDist;
-}				t_list;
-
-typedef struct	s_list2
-{
+	float		movespeed;
+	float		rotspeed;
 	char		*size;
 	char		*textN;
 	char		*textS;
@@ -78,10 +77,10 @@ typedef struct	s_list2
 	char		*textSprite;
 	char		*textF;
 	char		*textC;
-}				t_list2;
+}				t_list;
 
 void			ft_raycast(t_list *list);
-void			ft_readKeys(t_list *list, char **argv);
+void			ft_readKeys(t_list *list);
 void			ft_calculate_ray_and_deltaDist(t_list *list, int a);
 void			ft_calculate_step_and_sideDist(t_list *list);
 void			ft_perform_dda(t_list *list);
@@ -91,10 +90,11 @@ void			ft_init_colors(t_list *list);
 void			ft_verline(t_list *list, int a);
 void			ft_init_list(t_list *list);
 void			ft_init_list2(t_list *list);
-void			ft_init_list_parsing(t_list2 *list2);
-void			ft_whatstheconf(t_list2 *list2, char *line);
-void			ft_whatstheconf2(t_list2 *list2, char *line);
-void			ft_whatstheconf3(t_list2 *list2, char *line);
-int				ft_parsing(char *file);
+void			ft_whatstheconf(t_list *list, char *line);
+void			ft_whatstheconf2(t_list *list, char *line);
+void			ft_whatstheconf3(t_list *list, char *line);
+int				ft_parsing(char *file, t_list *list);
+int				ft_checkerror(int argc, char **argv, t_list *list);
+//int			ft_keyboard(int keycode, t_list *list);
 
 #endif

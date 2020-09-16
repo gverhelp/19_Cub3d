@@ -56,16 +56,13 @@ void	ft_init_list2(t_list *list)
 	list->color_wall_e = 0;
 	list->color_wall_s = 0;
 	list->color_wall_n = 0;
-}
-
-void	ft_init_list_parsing(t_list2 *list2)
-{
-	list2->size = ft_strdup("");
-	list2->textN = ft_strdup("");
-	list2->textS = ft_strdup("");
-	list2->textE = ft_strdup("");
-	list2->textW = ft_strdup("");
-	list2->textSprite = ft_strdup("");
-	list2->textF = ft_strdup("");
-	list2->textC = ft_strdup("");
+	list->savebmp = 0;
+	list->size = ft_strdup("");
+	list->textN = ft_strdup("");
+	list->textS = ft_strdup("");
+	list->textE = ft_strdup("");
+	list->textW = ft_strdup("");
+	list->textSprite = ft_strdup("");
+	list->textF = ft_strdup("");
+	list->textC = ft_strdup("");
 }

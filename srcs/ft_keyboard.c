@@ -11,10 +11,22 @@
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 /*
-void	ft_readKeys(t_data *data, )
+int	ft_keyboard(int keycode, t_list *list)
 {
-	//move forward if no wall in front of you
+	list->movespeed = 0.4;
+	list->rotspeed = 0.25;
+	if (keycode == 13 || keycode == 126)
+	{
+		if (list->map
+	}
+	return(0);
+}
+
+void	ft_readKeys(t_list *list)
+{
+	mlx_hook(list->mlx_win, 2, 1L << 0, ft_keyboard, list);
+//	mlx_hook(list->mlx_win, 17, 1L << 17, exit_hook, (void*)list);
+//	mlx_hook(list->mlx_win, 15, 1L << 16, visi, list);
 }
 */

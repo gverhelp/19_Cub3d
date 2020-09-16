@@ -40,130 +40,129 @@ int worldMap[mapWidth][mapHeight]=
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
-void	ft_calculate_ray_and_deltaDist(t_data *data, int a)
+void	ft_calculate_ray_and_deltaDist(t_list *list, int a)
 {
 	//calculate ray position and direction
-	data->cameraX = 2 * a / (float)screenWidth - 1; //x-coordinate in camera space
-	data->rayDirX = data->dirX + data->planeX * data->cameraX;
-	data->rayDirY = data->dirY + data->planeY * data->cameraX;
+	list->cameraX = 2 * a / (float)screenWidth - 1; //x-coordinate in camera space
+	list->rayDirX = list->dirX + list->planeX * list->cameraX;
+	list->rayDirY = list->dirY + list->planeY * list->cameraX;
 
 	//which box of the map we're in
-	data->mapX = (int)data->posX;
-	data->mapY = (int)data->posY;
+	list->mapX = (int)list->posX;
+	list->mapY = (int)list->posY;
 
 	//sideDist are the length of ray from current position to next x or y-side
 	//length of ray from one x or y-side to next x or y-side
-	data->deltaDistX = fabs(1 / data->rayDirX);
-	data->deltaDistY = fabs(1 / data->rayDirY);
+	list->deltaDistX = fabs(1 / list->rayDirX);
+	list->deltaDistY = fabs(1 / list->rayDirY);
 }
 
-void	ft_calculate_step_and_sideDist(t_data *data)
+void	ft_calculate_step_and_sideDist(t_list *list)
 {
 	//calculate step and initial sideDist
-	if (data->rayDirX < 0)
+	if (list->rayDirX < 0)
 	{
-		data->stepX = -1;
-		data->sideDistX = (data->posX - data->mapX) * data->deltaDistX;
+		list->stepX = -1;
+		list->sideDistX = (list->posX - list->mapX) * list->deltaDistX;
 	}
 	else
 	{
-		data->stepX = 1;
-		data->sideDistX = (data->mapX + 1.0 - data->posX) * data->deltaDistX;
+		list->stepX = 1;
+		list->sideDistX = (list->mapX + 1.0 - list->posX) * list->deltaDistX;
 	}
-	if (data->rayDirY < 0)
+	if (list->rayDirY < 0)
 	{
-		data->stepY = -1;
-		data->sideDistY = (data->posY - data->mapY) * data->deltaDistY;
+		list->stepY = -1;
+		list->sideDistY = (list->posY - list->mapY) * list->deltaDistY;
 	}
 	else
 	{
-		data->stepY = 1;
-		data->sideDistY = (data->mapY + 1.0 - data->posY) * data->deltaDistY;
+		list->stepY = 1;
+		list->sideDistY = (list->mapY + 1.0 - list->posY) * list->deltaDistY;
 	}
 }
 
-void	ft_perform_dda(t_data *data)
+void	ft_perform_dda(t_list *list)
 {
 	//jump to next map square, OR in x-direction, OR, in y-direction
-	while (data->hit == 0)
+	while (list->hit == 0)
 	{
-		if (data->sideDistX < data->sideDistY)
+		if (list->sideDistX < list->sideDistY)
 		{
-			data->sideDistX += data->deltaDistX;
-			data->mapX += data->stepX;
-			data->side = 0;
+			list->sideDistX += list->deltaDistX;
+			list->mapX += list->stepX;
+			list->side = 0;
 		}
 		else
 		{
-			data->sideDistY += data->deltaDistY;
-			data->mapY += data->stepY;
-			data->side = 1;
+			list->sideDistY += list->deltaDistY;
+			list->mapY += list->stepY;
+			list->side = 1;
 		}
 		//Check if ray has hit a wall
-		if (worldMap[data->mapX][data->mapY] > 0)
-			data->hit = 1;
+		if (worldMap[list->mapX][list->mapY] > 0)
+			list->hit = 1;
 	}
 }
 
-void	ft_calculate_dist(t_data *data)
+void	ft_calculate_dist(t_list *list)
 {
 	//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect)
-	if (data->side == 0)
-		data->perpWallDist = (data->mapX - data->posX + (1 - data->stepX) / 2) / data->rayDirX;
+	if (list->side == 0)
+		list->perpWallDist = (list->mapX - list->posX + (1 - list->stepX) / 2) / list->rayDirX;
 	else
-		data->perpWallDist = (data->mapY - data->posY + (1 - data->stepY) / 2) / data->rayDirY;
+		list->perpWallDist = (list->mapY - list->posY + (1 - list->stepY) / 2) / list->rayDirY;
 }
 
-void	ft_calculate_height_wall(t_data *data)
+void	ft_calculate_height_wall(t_list *list)
 {
 	//Calculate height ofl ine to draw on screen
-	data->lineHeight = (int)(screenHeight / data->perpWallDist);
+	list->lineHeight = (int)(screenHeight / list->perpWallDist);
 
 	//Calculate lowest and highest pixel to fill in current stripe
-	data->drawStart = -data->lineHeight / 2 + screenHeight / 2;
-	if (data->drawStart < 0)
-		data->drawStart = 0;
-	data->drawEnd = data->lineHeight / 2 + screenHeight / 2;
-	if (data->drawEnd >= screenHeight)
-		data->drawEnd = screenHeight - 1;
+	list->drawStart = -list->lineHeight / 2 + screenHeight / 2;
+	if (list->drawStart < 0)
+		list->drawStart = 0;
+	list->drawEnd = list->lineHeight / 2 + screenHeight / 2;
+	if (list->drawEnd >= screenHeight)
+		list->drawEnd = screenHeight - 1;
 }
 
-void	ft_verline(t_data *data, int a)
+void	ft_verline(t_list *list, int a)
 {
 	int	y;
 
 	y = 0;
-	while (y < data->drawStart)
+	while (y < list->drawStart)
 	{
-		data->addr[y * screenWidth + a] = data->color_floor;
+		list->addr[y * screenWidth + a] = list->color_floor;
 		y++;
 	}
-	while (y < data->drawEnd)
+	while (y < list->drawEnd)
 	{
-		//if (data->side == 0 && data->rayDirX <= 0)
-		//	data->addr[y * screenWidth + a] = data->color_wall_w;
-		//if (data->side == 0 && data->rayDirY > 0)
-			data->addr[y * screenWidth + a] = data->color_wall_e;
-		//if (data->side == 1 && data->rayDirY > 0)
-		//	data->addr[y * screenWidth + a] = data->color_wall_s;
-		//if (data->side == 1 && data->rayDirY <= 0)
-		//	data->addr[y * screenWidth + a] = data->color_wall_n;
+		//if (list->side == 0 && list->rayDirX <= 0)
+		//	list->addr[y * screenWidth + a] = list->color_wall_w;
+		//if (list->side == 0 && list->rayDirY > 0)
+			list->addr[y * screenWidth + a] = list->color_wall_e;
+		//if (list->side == 1 && list->rayDirY > 0)
+		//	list->addr[y * screenWidth + a] = list->color_wall_s;
+		//if (list->side == 1 && list->rayDirY <= 0)
+		//	list->addr[y * screenWidth + a] = list->color_wall_n;
 		y++;
 	}
 	while (y < screenHeight)
 	{
-		data->addr[y * screenWidth + a] = data->color_sky;
+		list->addr[y * screenWidth + a] = list->color_sky;
 		y++;
 	}
 }
 
-void	ft_init_colors(t_data *data)
+void	ft_init_colors(t_list *list)
 {
-	data->color_sky = 65536 * 200 + 256 * 200 + 25;
-	data->color_wall_n = 65536 * 200 + 256 * 50 + 25;
-	data->color_wall_s = 65536 * 150 + 256 * 100 + 25;
-	data->color_wall_e = 65536 * 100 + 256 * 150 + 25;
-	data->color_wall_w = 65536 * 50 + + 256 * 200 + 25;
-	data->color_floor = 65536 * 200 + 256 * 175 + 150;
+	list->color_sky = 65536 * 200 + 256 * 200 + 25;
+	list->color_wall_n = 65536 * 200 + 256 * 50 + 25;
+	list->color_wall_s = 65536 * 150 + 256 * 100 + 25;
+	list->color_wall_e = 65536 * 100 + 256 * 150 + 25;
+	list->color_wall_w = 65536 * 50 + + 256 * 200 + 25;
+	list->color_floor = 65536 * 200 + 256 * 175 + 150;
 }
-

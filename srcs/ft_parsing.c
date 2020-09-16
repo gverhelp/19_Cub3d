@@ -12,89 +12,92 @@
 
 #include "../include/cub3d.h"
 
-void	ft_whatstheconf3(t_list2 *list2, char *line)
+void	ft_whatstheconf3(t_list *list, char *line)
 {
 	char	*tmp;
 
 	tmp = NULL;
-	if (line[0] == 'F' && list2->textF[0] == '\0')
+	if (line[0] == 'S' && list->textS[0] == '\0')	
 	{
-		tmp = list2->textF;
-		list2->textF = ft_strjoin(list2->textF, line);
-		free(tmp);
-	}
-	if (line[0] == 'C' && list2->textC[0] == '\0')
-	{
-		tmp = list2->textC;
-		list2->textC = ft_strjoin(list2->textC, line);
-		free(tmp);
+		if (line[1] == 'O' && list->textS[0] == '\0')
+		{
+			tmp = list->textS;
+			list->textS = ft_strjoin(list->textS, line);
+			free(tmp);
+		}
+		if (line[1] == ' ' && list->textSprite[0] == '\0')
+		{
+			tmp = list->textSprite;
+			list->textSprite = ft_strjoin(list->textSprite, line);
+			free(tmp);
+		}
 	}
 }
 
-void	ft_whatstheconf2(t_list2 *list2, char *line)
+void	ft_whatstheconf2(t_list *list, char *line)
 {
 	char	*tmp;
 
 	tmp = NULL;
-	if (line[0] == 'E' && list2->textE[0] == '\0')
+	if (line[0] == 'E' && list->textE[0] == '\0')
 	{
-		tmp = list2->textE;
-		list2->textE = ft_strjoin(list2->textE, line);
+		tmp = list->textE;
+		list->textE = ft_strjoin(list->textE, line);
 		free(tmp);
 	}
-	if (line[0] == 'W' && list2->textW[0] == '\0')
+	if (line[0] == 'F' && list->textF[0] == '\0')
 	{
-		tmp = list2->textW;
-		list2->textW = ft_strjoin(list2->textW, line);
+		tmp = list->textF;
+		list->textF = ft_strjoin(list->textF, line);
 		free(tmp);
 	}
-	if (line[0] == 'S' && list2->textSprite[0] == '\0')
+	if (line[0] == 'C' && list->textC[0] == '\0')
 	{
-		tmp = list2->textSprite;
-		list2->textSprite = ft_strjoin(list2->textSprite, line);
+		tmp = list->textC;
+		list->textC = ft_strjoin(list->textC, line);
 		free(tmp);
 	}
-	ft_whatstheconf3(list2, line);
+	ft_whatstheconf3(list, line);
 }
 
-void	ft_whatstheconf(t_list2 *list2, char *line)
+void	ft_whatstheconf(t_list *list, char *line)
 {
 	char	*tmp;
 
 	tmp = NULL;
-	if (line[0] == 'R' && list2->size[0] == '\0')
+	if (line[0] == 'R' && list->size[0] == '\0')
 	{
-		tmp = list2->size;
-		list2->size = ft_strjoin(list2->size, line);
+		tmp = list->size;
+		list->size = ft_strjoin(list->size, line);
 		free(tmp);
 	}
-	if (line[0] == 'N' && list2->textN[0] == '\0')
+	if (line[0] == 'N' && list->textN[0] == '\0')
 	{
-		tmp = list2->textN;
-		list2->textN = ft_strjoin(list2->textN, line);
+		tmp = list->textN;
+		list->textN = ft_strjoin(list->textN, line);
 		free(tmp);
 	}
-	if (line[0] == 'S' && list2->textS[0] == '\0')
+	if (line[0] == 'W' && list->textW[0] == '\0')
 	{
-		tmp = list2->textS;
-		list2->textS = ft_strjoin(list2->textS, line);
+		tmp = list->textW;
+		list->textW = ft_strjoin(list->textW, line);
 		free(tmp);
 	}
-	ft_whatstheconf2(list2, line);
+	ft_whatstheconf2(list, line);
 }
 
-int		ft_parsing(char *file)
+int		ft_parsing(char *file, t_list *list)
 {
 	int		fd;
 	char	*line;
-	t_list2	list2;
 
-	ft_init_list_parsing(&list2);
+	line = NULL;
 	fd = open(file, O_RDONLY);
 	while (get_next_line(fd, &line))
 	{
 		if (line[0] != '\0')
-			ft_whatstheconf(&list2, line);
+			ft_whatstheconf(list, line);
 	}
+	close(fd);
 	return (0);
 }
