@@ -63,12 +63,11 @@ int		main(int argc, char **argv)
 {
 	t_list	list;
 
-	ft_init_list(&list);	
-	ft_init_list2(&list);
+	ft_init_list(&list);
 	if (ft_checkerror(argc, argv, &list) == -1)
 		return (-1);
 	list.mlx = mlx_init();
-	list.mlx_win = mlx_new_window(list.mlx, screenWidth, screenHeight, "Mon super carre!");
+	list.mlx_win = mlx_new_window(list.mlx, screenWidth, screenHeight, "Cub3d");
 	list.img = mlx_new_image(list.mlx, screenWidth, screenHeight);
 	list.addr = (int*)mlx_get_data_addr(list.img, &list.bits_per_pixel, &list.line_length, &list.endian);
 	ft_raycast(&list);

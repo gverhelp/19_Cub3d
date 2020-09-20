@@ -32,6 +32,7 @@ void	ft_whatstheconf3(t_list *list, char *line)
 			free(tmp);
 		}
 	}
+	list->aParsing++;
 }
 
 void	ft_whatstheconf2(t_list *list, char *line)
@@ -86,18 +87,53 @@ void	ft_whatstheconf(t_list *list, char *line)
 	ft_whatstheconf2(list, line);
 }
 
+int		ft_whatsinmap(t_list *list, char *line)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	if (line[0] == '\0' && list->aParsing > 8)
+	{
+		write(1, "Error in Map\n", 13);
+		return (-1);
+	}
+	if (line[0] != '\0' && list->aParsing > 8)
+	{
+		tmp = list->tmpmap;
+		list->tmpmap = ft_strjoin(tmp, line);
+		free(tmp);
+		tmp = list->tmpmap;
+		list->tmpmap = ft_strjoin(tmp, "\n");
+		free(tmp);
+		return (1);
+	}
+	return (-1);	
+}
+
 int		ft_parsing(char *file, t_list *list)
 {
 	int		fd;
 	char	*line;
 
 	line = NULL;
-	fd = open(file, O_RDONLY);
+	list->aParsing = 0;
+	list->bParsing = 0;
+	if ((fd = open(file, O_RDONLY)) <= 0)
+	{
+		write(1, "Error Unopened File", 19);
+		return (-1);
+	}
 	while (get_next_line(fd, &line))
 	{
 		if (line[0] != '\0')
 			ft_whatstheconf(list, line);
+		if (ft_whatsinmap(list, line) == 1)
+			list->bParsing++;
+		free(line);
 	}
-	close(fd);
+	printf("%s", list->tmpmap);
+//	if (ft_check(list, fd, line) == -1)
+//		return(-1);
+//je dois encore close(fd) qlq part
 	return (0);
 }

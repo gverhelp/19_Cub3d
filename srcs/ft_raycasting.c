@@ -100,7 +100,7 @@ void	ft_perform_dda(t_list *list)
 			list->side = 1;
 		}
 		//Check if ray has hit a wall
-		if (worldMap[list->mapX][list->mapY] > 0)
+		if (worldMap[list->mapX][list->mapY] == 1)
 			list->hit = 1;
 	}
 }

@@ -12,7 +12,16 @@
 
 #include "../include/cub3d.h"
 
-void	ft_init_list(t_list *list)
+void	ft_init_list3(t_list *list)
+{
+	list->stepY = 0;
+	list->aParsing = 0;
+	list->bParsing = 0;
+	list->tmpmap = ft_strdup("");
+	list->map = 0;
+}
+
+void	ft_init_list2(t_list *list)
 {
 	list->img = 0;
 	list->mlx = 0;
@@ -37,10 +46,10 @@ void	ft_init_list(t_list *list)
 	list->sideDistX = 0;
 	list->sideDistY = 0;
 	list->stepX = 0;
-	list->stepY = 0;
+	ft_init_list3(list);
 }
 
-void	ft_init_list2(t_list *list)
+void	ft_init_list(t_list *list)
 {
 	list->hit = 0;
 	list->side = 0;
@@ -65,4 +74,5 @@ void	ft_init_list2(t_list *list)
 	list->textSprite = ft_strdup("");
 	list->textF = ft_strdup("");
 	list->textC = ft_strdup("");
+	ft_init_list2(list);
 }

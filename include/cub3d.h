@@ -23,8 +23,8 @@
 
 # define mapWidth 24
 # define mapHeight 24
-# define screenWidth 800
-# define screenHeight 400
+# define screenWidth 1280
+# define screenHeight 720
 
 typedef struct	s_list
 {
@@ -51,6 +51,8 @@ typedef struct	s_list
 	int			color_wall_s;
 	int			color_wall_n;
 	int			savebmp;
+	int			aParsing;
+	int			bParsing;
 	float		posX;
 	float		posY;
 	float		dirX;
@@ -77,6 +79,8 @@ typedef struct	s_list
 	char		*textSprite;
 	char		*textF;
 	char		*textC;
+	char		*tmpmap;
+	char		**map;
 }				t_list;
 
 void			ft_raycast(t_list *list);
@@ -90,11 +94,15 @@ void			ft_init_colors(t_list *list);
 void			ft_verline(t_list *list, int a);
 void			ft_init_list(t_list *list);
 void			ft_init_list2(t_list *list);
+void			ft_init_list3(t_list *list);
 void			ft_whatstheconf(t_list *list, char *line);
 void			ft_whatstheconf2(t_list *list, char *line);
 void			ft_whatstheconf3(t_list *list, char *line);
+int				ft_whatsinmap(t_list *list, char *line);
 int				ft_parsing(char *file, t_list *list);
 int				ft_checkerror(int argc, char **argv, t_list *list);
+//int				ft_check(t_list *list, int fd, char *line);
+//int				ft_map(t_list *list, int fd, char *line);
 //int			ft_keyboard(int keycode, t_list *list);
 
 #endif
