@@ -12,25 +12,6 @@
 
 #include "../include/cub3d.h"
 
-void	ft_raycast(t_list *list)
-{
-	int	a;
-
-	a = 0;
-	ft_init_colors(list);
-	while (a < screenWidth)
-	{
-		list->hit = 0; //what direction to stop in x or y-drection (either +1 or -1)
-		ft_calculate_ray_and_deltaDist(list, a);
-		ft_calculate_step_and_sideDist(list);
-		ft_perform_dda(list);
-		ft_calculate_dist(list);
-		ft_calculate_height_wall(list);
-		ft_verline(list, a);
-		a++;
-	}
-}
-
 int		ft_checkerror(int argc, char **argv, t_list *list)
 {
 	if (argc >= 2)
@@ -70,7 +51,8 @@ int		main(int argc, char **argv)
 	list.mlx_win = mlx_new_window(list.mlx, screenWidth, screenHeight, "Cub3d");
 	list.img = mlx_new_image(list.mlx, screenWidth, screenHeight);
 	list.addr = (int*)mlx_get_data_addr(list.img, &list.bits_per_pixel, &list.line_length, &list.endian);
-	ft_raycast(&list);
+	if (ft_raycasting(&list) == -1)
+		return(-1);
 	mlx_put_image_to_window(list.mlx, list.mlx_win, list.img, 0, 0);
 //	ft_readKeys(&list);
 	mlx_loop(list.mlx);

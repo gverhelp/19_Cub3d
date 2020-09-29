@@ -18,8 +18,10 @@ MINILIBX_PATH = ./miniLibX
 SRCS = srcs/main.c \
 	srcs/ft_init_struct.c \
 	srcs/ft_raycasting.c \
+	srcs/ft_raycasting2.c \
 	srcs/ft_parsing.c \
 	srcs/ft_parsing2.c \
+	srcs/ft_checkpos.c
 
 OBJS = ${SRCS:.c=.o}
 INCLUDE = cube3d.h

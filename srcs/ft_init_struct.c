@@ -18,7 +18,9 @@ void	ft_init_list3(t_list *list)
 	list->aParsing = 0;
 	list->bParsing = 0;
 	list->tmpmap = ft_strdup("");
-	list->map = 0;
+	list->map = NULL;
+	list->zbuffer = 0;
+	list->position = 0;
 }
 
 void	ft_init_list2(t_list *list)
@@ -30,12 +32,12 @@ void	ft_init_list2(t_list *list)
 	list->bits_per_pixel = 0;
 	list->line_length = 0;
 	list->endian = 0;
-	list->posX = 22;
-	list->posY = 12;
-	list->dirX = -1;
+	list->posX = 0; //22
+	list->posY = 0; //12
+	list->dirX = 0; //-1
 	list->dirY = 0;
 	list->planeX = 0;
-	list->planeY = 0.66;
+	list->planeY = 0; //0.66
 	list->time = 0;
 	list->oldTime = 0;
 	list->cameraX = 0;
