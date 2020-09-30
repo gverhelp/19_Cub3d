@@ -54,6 +54,7 @@ typedef struct	s_list
 	int			aParsing;
 	int			bParsing;
 	int			position;
+	int			comptPos;
 	double		zbuffer;
 	double		posX;
 	double		posY;
@@ -109,6 +110,7 @@ int				ft_map(t_list *list);
 int				ft_checkTxtError(t_list *list);
 int				ft_checkpos(t_list *list);
 int				ft_checkErrorPos(t_list *list, int a, int b);
+int				ft_checkSpace(t_list *list, int a, int b);
 //int			ft_keyboard(int keycode, t_list *list);
 
 #endif

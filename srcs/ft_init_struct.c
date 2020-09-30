@@ -21,6 +21,7 @@ void	ft_init_list3(t_list *list)
 	list->map = NULL;
 	list->zbuffer = 0;
 	list->position = 0;
+	list->comptPos = 0;
 }
 
 void	ft_init_list2(t_list *list)

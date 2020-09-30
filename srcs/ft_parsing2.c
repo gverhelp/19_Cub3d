@@ -16,7 +16,8 @@ int     ft_map(t_list *list)
     tmp = list->tmpmap;
     list->map = ft_split(tmp, '\n');
     free(tmp);
-    ft_checkTxTError(list);
+    if (ft_checkTxTError(list) == -1)
+        return (-1);
     return (1);
 }
 
