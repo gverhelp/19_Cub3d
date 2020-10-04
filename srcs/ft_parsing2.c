@@ -1,27 +1,6 @@
 
 #include "../include/cub3d.h"
 
-int		ft_checkSpace(t_list *list, int a, int b)
-{
-	if (list->map[a][b - 1] == ' ')
-		return (-1);
-	if (list->map[a][b + 1] == ' ')
-		return (-1);
-	if (list->map[a + 1][b] == ' ')
-		return (-1);
-	if (list->map[a - 1][b] == ' ')
-		return (-1);
-	if (list->map[a - 1][b - 1] == ' ')
-		return (-1);
-	if (list->map[a + 1][b + 1] == ' ')
-		return (-1);
-	if (list->map[a + 1][b - 1] == ' ')
-		return (-1);
-	if (list->map[a - 1][b + 1] == ' ')
-		return (-1);
-	return (1);
-}
-
 int     ft_checkTxTError(t_list *list)
 {
     if (ft_checkpos(list) == -1)
