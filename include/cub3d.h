@@ -23,8 +23,6 @@
 
 # define mapWidth 24
 # define mapHeight 24
-# define screenWidth 1280
-# define screenHeight 720
 
 typedef struct	s_list
 {
@@ -55,6 +53,8 @@ typedef struct	s_list
 	int			bParsing;
 	int			position;
 	int			comptPos;
+	int			screenWidth;
+	int			screenHeight;
 	double		zbuffer;
 	double		posX;
 	double		posY;
@@ -74,6 +74,8 @@ typedef struct	s_list
 	double		perpWallDist;
 	double		movespeed;
 	double		rotspeed;
+	double		oldDirX;
+	double		oldPlaneX;
 	char		*size;
 	char		*textN;
 	char		*textS;
@@ -102,6 +104,7 @@ void			ft_whatstheconf2(t_list *list, char *line);
 void			ft_whatstheconf3(t_list *list, char *line);
 void			ft_dataPosition(t_list *list, int a, int b);
 void			ft_dataPosition2(t_list *list, int a, int b);
+void			ft_checkMaxMinScreen(t_list *list);
 int				ft_whatsinmap(t_list *list, char *line);
 int				ft_parsing(char *file, t_list *list);
 int				ft_checkerror(int argc, char **argv, t_list *list);
@@ -111,6 +114,11 @@ int				ft_checkTxtError(t_list *list);
 int				ft_checkpos(t_list *list);
 int				ft_checkErrorPos(t_list *list, int a, int b);
 int				ft_checkSpace(t_list *list, int a, int b);
-//int			ft_keyboard(int keycode, t_list *list);
+int				ft_keyboard(int keycode, t_list *list);
+void			ft_keyboard2(int keycode, t_list *list);
+void			ft_keyboard3(int keycode, t_list *list);
+void			ft_keyboard4(int keycode, t_list *list);
+int				ft_esc(t_list *list);
+int				ft_checkScreen(t_list *list);
 
 #endif

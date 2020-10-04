@@ -1,26 +1,5 @@
 #include "../include/cub3d.h"
 
-int		ft_checkSpace(t_list *list, int a, int b)
-{
-	if (list->map[a][b - 1] == ' ')
-		return (-1);
-	if (list->map[a][b + 1] == ' ')
-		return (-1);
-	if (list->map[a + 1][b] == ' ')
-		return (-1);
-	if (list->map[a - 1][b] == ' ')
-		return (-1);
-	if (list->map[a - 1][b - 1] == ' ')
-		return (-1);
-	if (list->map[a + 1][b + 1] == ' ')
-		return (-1);
-	if (list->map[a + 1][b - 1] == ' ')
-		return (-1);
-	if (list->map[a - 1][b + 1] == ' ')
-		return (-1);
-	return (1);
-}
-
 void    ft_dataPosition2(t_list *list, int a, int b)
 {
     if (list->map[a][b] == 'N')
@@ -45,8 +24,8 @@ void    ft_dataPosition2(t_list *list, int a, int b)
 
 void    ft_dataPosition(t_list *list, int a, int b)
 {
-    list->posY = b + 0.5;
-    list->posX = a + 0.5;
+    list->posY = a + 0.5;
+    list->posX = b + 0.5;
     if (list->map[a][b] == 'E')
     {
         list->planeX = 0;

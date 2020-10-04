@@ -8,14 +8,14 @@ void    ft_raycast4(t_list *list, int a)
 	else
 		list->perpWallDist = (list->mapY - list->posY + (1 - list->stepY) / 2) / list->rayDirY;
     //Calculate height ofl ine to draw on screen
-	list->lineHeight = (int)(screenHeight / list->perpWallDist);
+	list->lineHeight = (int)(list->screenHeight / list->perpWallDist);
 	//Calculate lowest and highest pixel to fill in current stripe
-	list->drawStart = -list->lineHeight / 2 + screenHeight / 2;
+	list->drawStart = -list->lineHeight / 2 + list->screenHeight / 2;
 	if (list->drawStart < 0)
 		list->drawStart = 0;
-	list->drawEnd = list->lineHeight / 2 + screenHeight / 2;
-	if (list->drawEnd >= screenHeight)
-		list->drawEnd = screenHeight - 1;
+	list->drawEnd = list->lineHeight / 2 + list->screenHeight / 2;
+	if (list->drawEnd >= list->screenHeight)
+		list->drawEnd = list->screenHeight - 1;
     ft_verline(list, a);
 }
 
@@ -37,7 +37,7 @@ void    ft_raycast3(t_list *list, int a)
 			list->side = 1;
 		}
 		//Check if ray has hit a wall
-		if (list->map[list->mapX][list->mapY] == '1')
+		if (list->map[list->mapY][list->mapX] == '1')
 			list->hit = 1;
 	}
     ft_raycast4(list, a);
@@ -72,7 +72,7 @@ void    ft_raycast2(t_list *list, int a)
 void    ft_raycast(t_list *list, int a)
 {
     //calculate ray position and direction
-	list->cameraX = 2 * a / (double)screenWidth - 1; //x-coordinate in camera space
+	list->cameraX = 2 * a / (double)list->screenWidth - 1; //x-coordinate in camera space
 	list->rayDirX = list->dirX + list->planeX * list->cameraX;
 	list->rayDirY = list->dirY + list->planeY * list->cameraX;
 
@@ -94,9 +94,9 @@ int     ft_raycasting(t_list *list)
 
     a = 0;
     ft_init_colors(list);
- //   if (!(list->zbuffer = malloc(sizeof(int *) * screenWidth + 1)))
+ //   if (!(list->zbuffer = malloc(sizeof(int *) * list->screenWidth + 1)))
  //       return (-1);
-    while (a < screenWidth)
+    while (a < list->screenWidth)
     {
         ft_raycast(list, a);
         a++;

@@ -48,13 +48,13 @@ int		main(int argc, char **argv)
 	if (ft_checkerror(argc, argv, &list) == -1)
 		return (-1);
 	list.mlx = mlx_init();
-	list.mlx_win = mlx_new_window(list.mlx, screenWidth, screenHeight, "Cub3d");
-	list.img = mlx_new_image(list.mlx, screenWidth, screenHeight);
+	list.mlx_win = mlx_new_window(list.mlx, list.screenWidth, list.screenHeight, "Cub3d");
+	list.img = mlx_new_image(list.mlx, list.screenWidth, list.screenHeight);
 	list.addr = (int*)mlx_get_data_addr(list.img, &list.bits_per_pixel, &list.line_length, &list.endian);
 	if (ft_raycasting(&list) == -1)
 		return(-1);
+	ft_readKeys(&list);
 	mlx_put_image_to_window(list.mlx, list.mlx_win, list.img, 0, 0);
-//	ft_readKeys(&list);
 	mlx_loop(list.mlx);
 	return (0);
 }

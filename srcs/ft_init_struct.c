@@ -22,6 +22,10 @@ void	ft_init_list3(t_list *list)
 	list->zbuffer = 0;
 	list->position = 0;
 	list->comptPos = 0;
+	list->oldDirX = 0;
+	list->oldPlaneX = 0;
+	list->screenWidth = 0;
+	list->screenHeight = 0;
 }
 
 void	ft_init_list2(t_list *list)
