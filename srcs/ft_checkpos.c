@@ -72,17 +72,11 @@ int     ft_checkErrorPos(t_list *list, int a, int b)
         list->map[a][b] == 'E' || list->map[a][b] == 'W'))
     {
         if (ft_checkSpace(list, a, b) == -1)
-        {
-            write(1, "Position Error\n", 15);
             return (-1);
-        }
         ft_dataPosition(list, a, b);
     }
     else
-    {
-        write(1, "Position Error\n", 15);
         return (-1);
-    }
     return (1);
 }
 
@@ -105,9 +99,6 @@ int     ft_checkpos(t_list *list)
         a++;
     }
     if (list->position != 1)
-    {
-        write(1, "Position Error\n", 15);
         return (-1);
-    }
     return (1);
 }

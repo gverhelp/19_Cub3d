@@ -21,9 +21,6 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define mapWidth 24
-# define mapHeight 24
-
 typedef struct	s_list
 {
 	void		*img;
@@ -55,6 +52,9 @@ typedef struct	s_list
 	int			comptPos;
 	int			screenWidth;
 	int			screenHeight;
+	int			r;
+	int			g;
+	int			b;
 	double		zbuffer;
 	double		posX;
 	double		posY;
@@ -120,5 +120,9 @@ void			ft_keyboard3(int keycode, t_list *list);
 void			ft_keyboard4(int keycode, t_list *list);
 int				ft_esc(t_list *list);
 int				ft_checkScreen(t_list *list);
+int				ft_checkSkyFloor(t_list *list);
+int				ft_checkSkyFloor2(t_list *list, char *str);
+int				ft_checkSkyFloor3(t_list *list, char *str, int a);
+int				ft_hexa(t_list *list);
 
 #endif

@@ -4,10 +4,18 @@
 int     ft_checkTxTError(t_list *list)
 {
     if (ft_checkpos(list) == -1)
+    {
+        write(1, "Error\nPosition Error\n", 21);
         return (-1);
+    }
     if (ft_checkScreen(list) == -1)
     {
-        write(1, "Screen Error\n", 13);
+        write(1, "Error\nScreen Error\n", 19);
+        return (-1);
+    }
+    if (ft_checkSkyFloor(list) == -1)
+    {
+        write(1, "Error\nError sky or floor\n", 25);
         return (-1);
     }
     return (1);
@@ -32,12 +40,12 @@ int     ft_check(t_list *list)
         return (-1);
     if (list->aParsing < 8)
     {
-        write(1, "Error Number of Texture\n", 24);
+        write(1, "Error\nError Number of Texture\n", 30);
         return (-1);
     }
     if (list->bParsing < 3)
     {
-        write(1, "Error in map\n", 13);
+        write(1, "Error\nError in map\n", 19);
         return (-1);
     }
     if (ft_map(list) == -1)

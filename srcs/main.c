@@ -18,7 +18,7 @@ int		ft_checkerror(int argc, char **argv, t_list *list)
 	{
 		if ((!(ft_strrchr(argv[1], '.'))) || (ft_strncmp(ft_strrchr(argv[1], '.'), ".cub\0", 5)))
 		{
-			write(1, "Error not .cub\n", 15);
+			write(1, "Error\nError not .cub\n", 21);
 			return (-1);
 		}
 	}
@@ -28,13 +28,13 @@ int		ft_checkerror(int argc, char **argv, t_list *list)
 				list->savebmp = 1;
 		else
 		{
-			write(1, "Error In The Arguments\n", 23);
+			write(1, "Error\nError In The Arguments\n", 29);
 			return (-1);
 		}
 	}
 	if (ft_parsing(argv[1], list) == -1)
 	{
-		write(1, "Error in the parsing\n", 21);
+		write(1, "Error\nError in the parsing\n", 27);
 		return (-1);
 	}
 	return (0);

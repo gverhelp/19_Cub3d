@@ -26,6 +26,9 @@ void	ft_init_list3(t_list *list)
 	list->oldPlaneX = 0;
 	list->screenWidth = 0;
 	list->screenHeight = 0;
+	list->r = -1;
+	list->g = -1;
+	list->b = -1;
 }
 
 void	ft_init_list2(t_list *list)

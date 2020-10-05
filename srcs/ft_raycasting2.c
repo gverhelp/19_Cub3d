@@ -2,12 +2,12 @@
 
 void	ft_init_colors(t_list *list)
 {
-	list->color_sky = 65536 * 200 + 256 * 200 + 25;
+//	list->color_sky = 65536 * 200 + 256 * 200 + 25;
 	list->color_wall_n = 65536 * 200 + 256 * 50 + 25;
 	list->color_wall_s = 65536 * 150 + 256 * 100 + 25;
 	list->color_wall_e = 65536 * 100 + 256 * 150 + 25;
 	list->color_wall_w = 65536 * 50 + + 256 * 200 + 25;
-	list->color_floor = 65536 * 200 + 256 * 175 + 150;
+//	list->color_floor = 65536 * 200 + 256 * 175 + 150;
 }
 
 void	ft_verline(t_list *list, int a)
