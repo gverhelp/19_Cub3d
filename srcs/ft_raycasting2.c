@@ -17,7 +17,7 @@ void	ft_verline(t_list *list, int a)
 	y = 0;
 	while (y < list->drawStart)
 	{
-		list->addr[y * list->screenWidth + a] = list->color_floor;
+		list->addr[y * list->screenWidth + a] = list->color_sky;
 		y++;
 	}
 	while (y < list->drawEnd)
@@ -34,7 +34,7 @@ void	ft_verline(t_list *list, int a)
 	}
 	while (y < list->screenHeight)
 	{
-		list->addr[y * list->screenWidth + a] = list->color_sky;
+		list->addr[y * list->screenWidth + a] = list->color_floor;
 		y++;
 	}
 }
