@@ -34,7 +34,7 @@ int		ft_checkerror(int argc, char **argv, t_list *list)
 	}
 	if (ft_parsing(argv[1], list) == -1)
 	{
-		write(1, "Error\nError in the parsing\n", 27);
+		write(1, "Error in the parsing\n", 21);
 		return (-1);
 	}
 	return (0);

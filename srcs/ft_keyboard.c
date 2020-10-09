@@ -27,6 +27,11 @@ void	ft_keyboard4(int keycode, t_list *list)
 		list->planeY = list->oldPlaneX * sin(-(list->rotspeed)) + list->planeY *
 			cos(-(list->rotspeed));
 	}
+	if (keycode == 53)
+	{
+	//rajouter exit_end
+		exit(1);
+	}
 }
 
 void	ft_keyboard3(int keycode, t_list *list)

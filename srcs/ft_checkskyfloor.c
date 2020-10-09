@@ -41,14 +41,13 @@ int     ft_checkSkyFloor2(t_list *list, char *str)
         ((str[a] == '0' && ft_isdigit(str[a + 1]))))
         return (-1);
     list->g = ft_atoi(&str[a]);
-    ft_checkSkyFloor3(list, str, a);
+    if (ft_checkSkyFloor3(list, str, a) == -1)
+        return (-1);
     return (0);
 }
 
 int    ft_hexa(t_list *list)
 {
-//    list->r *= 2^16;
-//    list->g *= 2^8;
     return (list->r << 16 | list->g << 8 | list->b);
 }
 

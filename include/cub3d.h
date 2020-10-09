@@ -124,5 +124,13 @@ int				ft_checkSkyFloor(t_list *list);
 int				ft_checkSkyFloor2(t_list *list, char *str);
 int				ft_checkSkyFloor3(t_list *list, char *str, int a);
 int				ft_hexa(t_list *list);
+int				ft_checkMap(t_list *list);
+int				ft_checkCharacters(t_list *list);
+int				ft_isspace(int c);
+int				ft_checkFirstLine(t_list *list);
+int				ft_checkLastLine(t_list *list);
+int				ft_checkFirstColumn(t_list *list);
+int				ft_checkLastColumn(t_list *list);
+int				ft_checkIfHole(t_list *list);
 
 #endif

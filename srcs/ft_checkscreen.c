@@ -4,12 +4,12 @@ void     ft_checkMaxMinScreen(t_list *list)
 {
     if (list->screenWidth > 1680)
         list->screenWidth = 1680;
-    if (list->screenWidth < 720)
-        list->screenWidth = 720;
+//    if (list->screenWidth < 720)
+//        list->screenWidth = 720;
     if (list->screenHeight > 1050)
         list->screenHeight = 1050;
-    if (list->screenHeight < 480)
-        list->screenHeight = 480;
+//    if (list->screenHeight < 480)
+ //       list->screenHeight = 480;
 }
 
 int     ft_checkScreen(t_list *list)

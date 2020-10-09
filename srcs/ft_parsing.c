@@ -101,7 +101,7 @@ int		ft_whatsinmap(t_list *list, char *line)
 	tmp = NULL;
 	if (line[0] == '\0' && list->aParsing > 8)
 	{
-		write(1, "Error in Map\n", 13);
+		write(1, "Error\nError in Map\n", 19);
 		return (-1);
 	}
 	if (line[0] != '\0' && list->aParsing == 8)
@@ -128,7 +128,7 @@ int		ft_parsing(char *file, t_list *list)
 	list->bParsing = 0;
 	if ((fd = open(file, O_RDONLY)) <= 0)
 	{
-		write(1, "Error Unopened File\n", 20);
+		write(1, "Error\nUnopened File\n", 20);
 		return (-1);
 	}
 	while (get_next_line(fd, &line))

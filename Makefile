@@ -26,6 +26,8 @@ SRCS = srcs/main.c \
 	srcs/ft_keyboard2.c \
 	srcs/ft_checkscreen.c \
 	srcs/ft_checkskyfloor.c \
+	srcs/ft_checkmap.c \
+	srcs/ft_checkmap2.c \
 
 OBJS = ${SRCS:.c=.o}
 INCLUDE = cube3d.h

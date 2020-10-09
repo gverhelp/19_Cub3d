@@ -18,6 +18,11 @@ int     ft_checkTxTError(t_list *list)
         write(1, "Error\nError sky or floor\n", 25);
         return (-1);
     }
+    if (ft_checkMap(list) == -1)
+    {
+        write(1, "Error\nError in map\n", 19);
+        return (-1);
+    }
     return (1);
 }
 
@@ -29,6 +34,7 @@ int     ft_map(t_list *list)
     tmp = list->tmpmap;
     list->map = ft_split(tmp, '\n');
     free(tmp);
+    //rajouter newmap? (voir alessio)
     if (ft_checkTxTError(list) == -1)
         return (-1);
     return (1);
