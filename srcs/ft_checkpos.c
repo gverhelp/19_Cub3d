@@ -18,7 +18,7 @@ int		ft_checkSpace(t_list *list, int a, int b)
 		return (-1);
 	if (list->map[a - 1][b + 1] == ' ')
 		return (-1);
-	return (1);
+	return (0);
 }
 
 void    ft_dataPosition2(t_list *list, int a, int b)

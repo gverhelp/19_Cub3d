@@ -60,9 +60,7 @@ int     ft_checkCharacters(t_list *list)
         while (list->map[a][b] != '\0')
         {
             if (list->map[a][b] != '0' && list->map[a][b] != '1'
-                && list->map[a][b] != '2' && list->map[a][b] != 'N'
-                && list->map[a][b] != 'S' && list->map[a][b] != 'E'
-                && list->map[a][b] != 'W' && (ft_isspace(list->map[a][b]) == 0))
+                && list->map[a][b] != '2' && (ft_isspace(list->map[a][b]) == 0))
                 return (-1);
             b++;
         }

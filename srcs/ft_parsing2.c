@@ -23,7 +23,7 @@ int     ft_checkTxTError(t_list *list)
         write(1, "Error\nError in map\n", 19);
         return (-1);
     }
-    return (1);
+    return (0);
 }
 
 int     ft_map(t_list *list)

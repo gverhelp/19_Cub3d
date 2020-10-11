@@ -55,6 +55,7 @@ typedef struct	s_list
 	int			r;
 	int			g;
 	int			b;
+	int			longestLine;
 	double		zbuffer;
 	double		posX;
 	double		posY;
@@ -132,5 +133,8 @@ int				ft_checkLastLine(t_list *list);
 int				ft_checkFirstColumn(t_list *list);
 int				ft_checkLastColumn(t_list *list);
 int				ft_checkIfHole(t_list *list);
+void			ft_addSpace(t_list *list);
+void			ft_addSpace2(t_list *list, int a);
+void			ft_addSpace3(t_list *list, int a);
 
 #endif
