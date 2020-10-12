@@ -22,14 +22,14 @@ void	ft_verline(t_list *list, int a)
 	}
 	while (y < list->drawEnd)
 	{
-	//	if (list->side == 0 && list->rayDirX <= 0) //<=
-	//		list->addr[y * list->screenWidth + a] = list->color_wall_w;
-	//	if (list->side == 0 && list->rayDirY > 0) //>
-			list->addr[y * list->screenWidth + a] = list->color_wall_e;
-	//	if (list->side == 1 && list->rayDirY > 0) //>
-	//		list->addr[y * list->screenWidth + a] = list->color_wall_s;
-	//	if (list->side == 1 && list->rayDirY <= 0) //<=
-	//		list->addr[y * list->screenWidth + a] = list->color_wall_n;
+//		if (list->side == 0 && list->rayDirX <= 0) //<=
+//			list->addr[y * list->screenWidth + a] = list->color_wall_w;
+//		if (list->side == 0 && list->rayDirY > 0) //>
+//			list->addr[y * list->screenWidth + a] = list->color_wall_e;
+//		if (list->side == 1 && list->rayDirY > 0) //>
+//			list->addr[y * list->screenWidth + a] = list->color_wall_s;
+//		if (list->side == 1 && list->rayDirY <= 0) //<=
+			list->addr[y * list->screenWidth + a] = list->color_wall_n;
 		y++;
 	}
 	while (y < list->screenHeight)

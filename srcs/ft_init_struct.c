@@ -29,7 +29,6 @@ void	ft_init_list3(t_list *list)
 	list->r = -1;
 	list->g = -1;
 	list->b = -1;
-	list->longestLine = 0;
 }
 
 void	ft_init_list2(t_list *list)

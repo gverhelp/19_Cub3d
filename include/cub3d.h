@@ -89,7 +89,7 @@ typedef struct	s_list
 	char		**map;
 }				t_list;
 
-int				ft_raycasting(t_list *list);
+void			ft_raycasting(t_list *list);
 void			ft_readKeys(t_list *list);
 void			ft_raycast(t_list *list, int a);
 void			ft_raycast2(t_list *list, int a);
@@ -112,6 +112,7 @@ int				ft_checkerror(int argc, char **argv, t_list *list);
 int				ft_check(t_list *list);
 int				ft_map(t_list *list);
 int				ft_checkTxtError(t_list *list);
+int				ft_checkTxTError2(t_list *list);
 int				ft_checkpos(t_list *list);
 int				ft_checkErrorPos(t_list *list, int a, int b);
 int				ft_checkSpace(t_list *list, int a, int b);
@@ -136,5 +137,6 @@ int				ft_checkIfHole(t_list *list);
 void			ft_addSpace(t_list *list);
 void			ft_addSpace2(t_list *list, int a);
 void			ft_addSpace3(t_list *list, int a);
+int				ft_checkTextures(t_list *list);
 
 #endif

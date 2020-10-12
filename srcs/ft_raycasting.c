@@ -88,7 +88,7 @@ void    ft_raycast(t_list *list, int a)
     ft_raycast2(list, a);
 }
 
-int     ft_raycasting(t_list *list)
+void     ft_raycasting(t_list *list)
 {
     int a;
 
@@ -103,5 +103,4 @@ int     ft_raycasting(t_list *list)
     }
     //sprites + save (voir chez Alessio)
   //  free(list->zbuffer);
-    return (0);
 }

@@ -29,6 +29,7 @@ SRCS = srcs/main.c \
 	srcs/ft_checkmap.c \
 	srcs/ft_checkmap2.c \
 	srcs/ft_checkmap3.c \
+	srcs/ft_checktextures.c \
 
 OBJS = ${SRCS:.c=.o}
 INCLUDE = cube3d.h
