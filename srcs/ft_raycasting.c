@@ -1,6 +1,6 @@
 #include "../include/cub3d.h"
 
-void    ft_raycast4(t_list *list, int a)
+void    ft_raycast4(t_list *list)
 {
     //Calculate distance projected on camera direction (Euclidean distance will give fisheye effect)
 	if (list->side == 0)
@@ -16,10 +16,9 @@ void    ft_raycast4(t_list *list, int a)
 	list->drawEnd = list->lineHeight / 2 + list->screenHeight / 2;
 	if (list->drawEnd >= list->screenHeight)
 		list->drawEnd = list->screenHeight - 1;
-    ft_verline(list, a);
 }
 
-void    ft_raycast3(t_list *list, int a)
+void    ft_raycast3(t_list *list)
 {
     //jump to next map square, OR in x-direction, OR, in y-direction
 	while (list->hit == 0)
@@ -40,10 +39,9 @@ void    ft_raycast3(t_list *list, int a)
 		if (list->map[list->mapY][list->mapX] == '1')
 			list->hit = 1;
 	}
-    ft_raycast4(list, a);
 }
 
-void    ft_raycast2(t_list *list, int a)
+void    ft_raycast2(t_list *list)
 {
     //calculate step and initial sideDist
 	if (list->rayDirX < 0)
@@ -66,7 +64,6 @@ void    ft_raycast2(t_list *list, int a)
 		list->stepY = 1;
 		list->sideDistY = (list->mapY + 1.0 - list->posY) * list->deltaDistY;
 	}
-    ft_raycast3(list, a);
 }
 
 void    ft_raycast(t_list *list, int a)
@@ -85,7 +82,6 @@ void    ft_raycast(t_list *list, int a)
 	list->deltaDistX = fabs(1 / list->rayDirX);
 	list->deltaDistY = fabs(1 / list->rayDirY);
 	list->hit = 0; //what direction to stop in x or y-direction (either +1 or -1)
-    ft_raycast2(list, a);
 }
 
 void     ft_raycasting(t_list *list)
@@ -93,14 +89,19 @@ void     ft_raycasting(t_list *list)
     int a;
 
     a = 0;
-    ft_init_colors(list);
  //   if (!(list->zbuffer = malloc(sizeof(int *) * list->screenWidth + 1)))
  //       return (-1);
     while (a < list->screenWidth)
     {
         ft_raycast(list, a);
+		ft_raycast2(list);
+		ft_raycast3(list);
+		ft_raycast4(list);
+		ft_wallTexture(list);
+		ft_verline(list, a);
         a++;
     }
     //sprites + save (voir chez Alessio)
+	mlx_put_image_to_window(list->mlx, list->mlx_win, list->img, 0, 0);
   //  free(list->zbuffer);
 }

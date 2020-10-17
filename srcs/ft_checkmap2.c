@@ -58,16 +58,14 @@ int     ft_checkLastColumn(t_list *list)
     int b;
 
     a = 0;
-    ft_addSpace(list);
     while (list->map && list->map[a])
     {
         b = ft_strlen(list->map[a]) - 1;
-        while (list->map[a][b] == ' ')
-            b--;
         if (list->map[a][b] != '1')
             return (-1);
         a++;
     }
+    ft_addSpace(list);
     return (0);
 }
 

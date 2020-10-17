@@ -54,6 +54,7 @@ int     ft_map(t_list *list)
 
 int     ft_check(t_list *list)
 {
+    list->mlx = mlx_init();
     if (!list->size)
         return (-1);
     if (list->aParsing < 8)

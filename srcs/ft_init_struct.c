@@ -12,6 +12,12 @@
 
 #include "../include/cub3d.h"
 
+void	ft_init_list4(t_list *list)
+{
+	list->texHeight = 0;
+	list->texWidth = 0;
+}
+
 void	ft_init_list3(t_list *list)
 {
 	list->stepY = 0;
@@ -29,6 +35,15 @@ void	ft_init_list3(t_list *list)
 	list->r = -1;
 	list->g = -1;
 	list->b = -1;
+	list->texPos = 0;
+	list->texX = 0;
+	list->texY = 0;
+	list->wallX = 0;
+	list->imgNO = 0;
+	list->addrNO = 0;
+	list->color = 0;
+	list->step = 0;
+	ft_init_list4(list);
 }
 
 void	ft_init_list2(t_list *list)
@@ -40,12 +55,12 @@ void	ft_init_list2(t_list *list)
 	list->bits_per_pixel = 0;
 	list->line_length = 0;
 	list->endian = 0;
-	list->posX = 0; //22
-	list->posY = 0; //12
-	list->dirX = 0; //-1
+	list->posX = 0;
+	list->posY = 0;
+	list->dirX = 0;
 	list->dirY = 0;
 	list->planeX = 0;
-	list->planeY = 0; //0.66
+	list->planeY = 0;
 	list->time = 0;
 	list->oldTime = 0;
 	list->cameraX = 0;
@@ -77,10 +92,10 @@ void	ft_init_list(t_list *list)
 	list->color_wall_n = 0;
 	list->savebmp = 0;
 	list->size = ft_strdup("");
-	list->textN = ft_strdup("");
-	list->textS = ft_strdup("");
-	list->textE = ft_strdup("");
-	list->textW = ft_strdup("");
+	list->textNO = ft_strdup("");
+	list->textSO = ft_strdup("");
+	list->textEA = ft_strdup("");
+	list->textWE = ft_strdup("");
 	list->textSprite = ft_strdup("");
 	list->textF = ft_strdup("");
 	list->textC = ft_strdup("");

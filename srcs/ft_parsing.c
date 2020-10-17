@@ -19,10 +19,10 @@ void	ft_whatstheconf3(t_list *list, char *line)
 	tmp = NULL;
 	if (line[0] == 'S')	
 	{
-		if (line[1] == 'O' && list->textS[0] == '\0')
+		if (line[1] == 'O' && list->textSO[0] == '\0')
 		{
-			tmp = list->textS;
-			list->textS = ft_strjoin(list->textS, line);
+			tmp = list->textSO;
+			list->textSO = ft_strjoin(list->textSO, line);
 			free(tmp);
 			list->aParsing++;
 		}
@@ -41,10 +41,10 @@ void	ft_whatstheconf2(t_list *list, char *line)
 	char	*tmp;
 
 	tmp = NULL;
-	if (line[0] == 'E' && list->textE[0] == '\0')
+	if (line[0] == 'E' && list->textEA[0] == '\0')
 	{
-		tmp = list->textE;
-		list->textE = ft_strjoin(list->textE, line);
+		tmp = list->textEA;
+		list->textEA = ft_strjoin(list->textEA, line);
 		free(tmp);
 		list->aParsing++;
 	}
@@ -77,17 +77,17 @@ void	ft_whatstheconf(t_list *list, char *line)
 		free(tmp);
 		list->aParsing++;
 	}
-	if (line[0] == 'N' && list->textN[0] == '\0')
+	if (line[0] == 'N' && list->textNO[0] == '\0')
 	{
-		tmp = list->textN;
-		list->textN = ft_strjoin(list->textN, line);
+		tmp = list->textNO;
+		list->textNO = ft_strjoin(list->textNO, line);
 		free(tmp);
 		list->aParsing++;
 	}
-	if (line[0] == 'W' && list->textW[0] == '\0')
+	if (line[0] == 'W' && list->textWE[0] == '\0')
 	{
-		tmp = list->textW;
-		list->textW = ft_strjoin(list->textW, line);
+		tmp = list->textWE;
+		list->textWE = ft_strjoin(list->textWE, line);
 		free(tmp);
 		list->aParsing++;
 	}

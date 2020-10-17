@@ -1,40 +1,56 @@
 #include "../include/cub3d.h"
 
-void	ft_init_colors(t_list *list)
+int		ft_wallTexture(t_list *list)
 {
-//	list->color_sky = 65536 * 200 + 256 * 200 + 25;
-	list->color_wall_n = 65536 * 200 + 256 * 50 + 25;
-	list->color_wall_s = 65536 * 150 + 256 * 100 + 25;
-	list->color_wall_e = 65536 * 100 + 256 * 150 + 25;
-	list->color_wall_w = 65536 * 50 + + 256 * 200 + 25;
-//	list->color_floor = 65536 * 200 + 256 * 175 + 150;
+	if (list->side == 0)
+		list->wallX = list->posY + list->perpWallDist * list->rayDirY;
+	else
+		list->wallX = list->posX + list->perpWallDist * list->rayDirX;
+	list->wallX -= floor((list->wallX));
+	list->texX = (int)(list->wallX * (double)list->texWidth);
+	if (list->side == 0 && list->rayDirX > 0)
+		list->texX = list->texWidth - list->texX - 1;
+	if (list->side == 1 && list->rayDirY < 0)
+		list->texX = list->texWidth - list->texX - 1;
+	list->step = 1.0 * list->texWidth / list->lineHeight;
+	list->texPos = (list->drawStart - list->screenHeight / 2 +
+			list->lineHeight / 2) * list->step;
+	return (0);
+}
+
+void	ft_verline2(t_list *list, int a, int b)
+{
+		list->texY = (int)list->texPos & (list->texHeight - 1);
+		list->texPos += list->step;
+		if (list->side == 1 && list->rayDirY < 0)
+			list->color = list->addrNO[list->texHeight * list->texY + list->texX];
+		if (list->side == 1 && list->rayDirY > 0)
+			list->color = list->addrSO[list->texHeight * list->texY + list->texX];
+		if (list->side == 0 && list->rayDirX < 0)
+			list->color = list->addrWE[list->texHeight * list->texY + list->texX];
+		if (list->side == 0 && list->rayDirX > 0)
+			list->color = list->addrEA[list->texHeight * list->texY + list->texX];
+		list->addr[b * list->screenWidth + a] = list->color;
 }
 
 void	ft_verline(t_list *list, int a)
 {
-	int	y;
+	int	b;
 
-	y = 0;
-	while (y < list->drawStart)
+	b = 0;
+	while (b < list->drawStart)
 	{
-		list->addr[y * list->screenWidth + a] = list->color_sky;
-		y++;
+		list->addr[b * list->screenWidth + a] = list->color_sky;
+		b++;
 	}
-	while (y < list->drawEnd)
+	while (b <= list->drawEnd)
 	{
-//		if (list->side == 0 && list->rayDirX <= 0) //<=
-//			list->addr[y * list->screenWidth + a] = list->color_wall_w;
-//		if (list->side == 0 && list->rayDirY > 0) //>
-//			list->addr[y * list->screenWidth + a] = list->color_wall_e;
-//		if (list->side == 1 && list->rayDirY > 0) //>
-//			list->addr[y * list->screenWidth + a] = list->color_wall_s;
-//		if (list->side == 1 && list->rayDirY <= 0) //<=
-			list->addr[y * list->screenWidth + a] = list->color_wall_n;
-		y++;
+		ft_verline2(list, a, b);
+		b++;
 	}
-	while (y < list->screenHeight)
+	while (b < list->screenHeight)
 	{
-		list->addr[y * list->screenWidth + a] = list->color_floor;
-		y++;
+		list->addr[b * list->screenWidth + a] = list->color_floor;
+		b++;
 	}
 }
