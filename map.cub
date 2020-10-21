@@ -3,7 +3,7 @@ R 1280 720
 NO ./textures/redbrick.xpm
 SO ./textures/bluestone.xpm
 WE ./textures/greystone.xpm
-EA ./textures/colorstone.xpm
+EA ./textures/wood.xpm
 
 S ./textures/wolf/barrel.xpm
 C 0,225,243
