@@ -3,11 +3,11 @@ R 1280 720
 NO ./textures/redbrick.xpm
 SO ./textures/bluestone.xpm
 WE ./textures/greystone.xpm
-EA ./textures/wood.xpm
+EA ./textures/colorstone.xpm
 
 S ./textures/wolf/barrel.xpm
 C 0,225,243
-F 224,254,169
+F 237,127,16
 
 111111111111111111111111
 100000000000000000000001

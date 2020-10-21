@@ -85,7 +85,7 @@ int     ft_checkpos(t_list *list)
     int a;
     int b;
 
-    a = 0;
+    a = 1;
     while (list->map != '\0' && list->map[a] != '\0')
     {
         b = 0;

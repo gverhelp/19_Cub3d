@@ -78,9 +78,8 @@ void	ft_keyboard2(int keycode, t_list *list)
 
 int		ft_keyboard(int keycode, t_list *list)
 {
-	list->movespeed = 0.4;
-	list->rotspeed = 0.25;
-	ft_keyboard2(keycode, list);
+	list->movespeed = 0.2; //0.4
+	list->rotspeed = 0.17; //0.25
 	if (keycode == 124) //fleche de droite, tourner la camera vers la droite
 	{
 		list->oldDirX = list->dirX;
@@ -94,6 +93,7 @@ int		ft_keyboard(int keycode, t_list *list)
 		list->planeY = list->oldPlaneX * sin(list->rotspeed) +
 			list->planeY * cos(list->rotspeed);
 	}
+	ft_keyboard2(keycode, list);
 	ft_raycasting(list);
 	mlx_put_image_to_window(list->mlx, list->mlx_win, list->img, 0, 0);
 	return (0);

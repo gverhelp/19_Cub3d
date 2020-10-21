@@ -1,73 +1,86 @@
-
 #include "../include/cub3d.h"
 
-int     ft_checkTxTError2(t_list *list)
+int     ft_text_WE(t_list *list, char *line)
 {
-    if (ft_checkTextures(list) == -1)
-    {
-        write(1, "Error\nError in textures\n", 24);
-        return (-1);
-    }
-    return (0);
+    char	*tmp;
+
+	tmp = NULL;
+    if (list->textWE[0] == '\0')
+	{
+		tmp = list->textWE;
+		list->textWE = ft_strjoin(list->textWE, line);
+		free(tmp);
+		list->aParsing++;
+		return (0);
+	}
+	else
+		return (-1);
 }
 
-int     ft_checkTxTError(t_list *list)
+int     ft_text_EA(t_list *list, char *line)
 {
-    if (ft_checkpos(list) == -1)
-    {
-        write(1, "Error\nPosition Error\n", 21);
-        return (-1);
-    }
-    if (ft_checkScreen(list) == -1)
-    {
-        write(1, "Error\nScreen Error\n", 19);
-        return (-1);
-    }
-    if (ft_checkSkyFloor(list) == -1)
-    {
-        write(1, "Error\nError sky or floor\n", 25);
-        return (-1);
-    }
-    if (ft_checkMap(list) == -1)
-    {
-        write(1, "Error\nError in map\n", 19);
-        return (-1);
-    }
-    if (ft_checkTxTError2(list) == -1)
-        return (-1);
-    return (0);
+    char	*tmp;
+
+	tmp = NULL;
+    if (list->textEA[0] == '\0')
+	{
+		tmp = list->textEA;
+		list->textEA = ft_strjoin(list->textEA, line);
+		free(tmp);
+		list->aParsing++;
+		return (0);
+	}
+	else
+		return (-1);
 }
 
-int     ft_map(t_list *list)
+int     ft_text_F(t_list *list, char *line)
 {
-    char   *tmp;
+    char	*tmp;
 
-    tmp = NULL;
-    tmp = list->tmpmap;
-    list->map = ft_split(tmp, '\n');
-    free(tmp);
-    //rajouter newmap? (voir alessio)
-    if (ft_checkTxTError(list) == -1)
-        return (-1);
-    return (1);
+	tmp = NULL;
+    if (list->textF[0] == '\0')
+	{
+		tmp = list->textF;
+		list->textF = ft_strjoin(list->textF, line);
+		free(tmp);
+		list->aParsing++;
+		return (0);
+	}
+	else
+		return (-1);
 }
 
-int     ft_check(t_list *list)
+int     ft_text_C(t_list *list, char *line)
 {
-    list->mlx = mlx_init();
-    if (!list->size)
-        return (-1);
-    if (list->aParsing < 8)
-    {
-        write(1, "Error\nError Number of Texture\n", 30);
-        return (-1);
-    }
-    if (list->bParsing < 3)
-    {
-        write(1, "Error\nError in map\n", 19);
-        return (-1);
-    }
-    if (ft_map(list) == -1)
-        return (-1);
-    return (1);
+    char	*tmp;
+
+	tmp = NULL;
+    if (list->textC[0] == '\0')
+	{
+		tmp = list->textC;
+		list->textC = ft_strjoin(list->textC, line);
+		free(tmp);
+		list->aParsing++;
+		return (0);
+	}
+	else
+		return (-1);
+}
+
+int     ft_text_SO(t_list *list, char *line)
+{
+    char	*tmp;
+
+	tmp = NULL;
+    if (list->textSO[0] == '\0')
+	{
+		tmp = list->textSO;
+		list->textSO = ft_strjoin(list->textSO, line);	
+    	free(tmp);
+		list->aParsing++;
+		return (0);
+	}
+	else
+		return (-1);
 }

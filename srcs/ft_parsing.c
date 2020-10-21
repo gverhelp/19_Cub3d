@@ -12,86 +12,64 @@
 
 #include "../include/cub3d.h"
 
-void	ft_whatstheconf3(t_list *list, char *line)
+int     ft_r_size(t_list *list, char *line)
 {
-	char	*tmp;
+    char	*tmp;
 
 	tmp = NULL;
-	if (line[0] == 'S')	
-	{
-		if (line[1] == 'O' && list->textSO[0] == '\0')
-		{
-			tmp = list->textSO;
-			list->textSO = ft_strjoin(list->textSO, line);
-			free(tmp);
-			list->aParsing++;
-		}
-		if (line[1] == ' ' && list->textSprite[0] == '\0')
-		{
-			tmp = list->textSprite;
-			list->textSprite = ft_strjoin(list->textSprite, line);
-			free(tmp);
-			list->aParsing++;
-		}
-	}
-}
-
-void	ft_whatstheconf2(t_list *list, char *line)
-{
-	char	*tmp;
-
-	tmp = NULL;
-	if (line[0] == 'E' && list->textEA[0] == '\0')
-	{
-		tmp = list->textEA;
-		list->textEA = ft_strjoin(list->textEA, line);
-		free(tmp);
-		list->aParsing++;
-	}
-	if (line[0] == 'F' && list->textF[0] == '\0')
-	{
-		tmp = list->textF;
-		list->textF = ft_strjoin(list->textF, line);
-		free(tmp);
-		list->aParsing++;
-	}
-	if (line[0] == 'C' && list->textC[0] == '\0')
-	{
-		tmp = list->textC;
-		list->textC = ft_strjoin(list->textC, line);
-		free(tmp);
-		list->aParsing++;
-	}
-	ft_whatstheconf3(list, line);
-}
-
-void	ft_whatstheconf(t_list *list, char *line)
-{
-	char	*tmp;
-
-	tmp = NULL;
-	if (line[0] == 'R' && list->size[0] == '\0')
+    if (list->size[0] == '\0')
 	{
 		tmp = list->size;
 		list->size = ft_strjoin(list->size, line);
 		free(tmp);
 		list->aParsing++;
+		return (0);
 	}
-	if (line[0] == 'N' && list->textNO[0] == '\0')
+	else
+		return (-1);
+}
+
+int     ft_text_NO(t_list *list, char *line)
+{
+    char	*tmp;
+
+	tmp = NULL;
+    if (list->textNO[0] == '\0')
 	{
 		tmp = list->textNO;
 		list->textNO = ft_strjoin(list->textNO, line);
 		free(tmp);
 		list->aParsing++;
+		return (0);
 	}
-	if (line[0] == 'W' && list->textWE[0] == '\0')
+	else
+		return (-1);
+}
+
+int		ft_whatstheconf(t_list *list, char *line)
+{
+	if (line[0] == 'R')
+		return (ft_r_size(list, line));
+	if (line[0] == 'N')
+		return (ft_text_NO(list, line));
+	if (line[0] == 'W')
+		return (ft_text_WE(list, line));
+	if (line[0] == 'E')
+		return (ft_text_EA(list, line));
+	if (line[0] == 'F')
+		return (ft_text_F(list, line));
+	if (line[0] == 'C')
+		return (ft_text_C(list, line));
+	if (line[0] == 'S')
 	{
-		tmp = list->textWE;
-		list->textWE = ft_strjoin(list->textWE, line);
-		free(tmp);
-		list->aParsing++;
+		if (line[1] == 'O')
+			return (ft_text_SO(list, line));
+		if (line[1] == ' ')
+			return (ft_text_Sprite(list, line));
 	}
-	ft_whatstheconf2(list, line);
+	if (ft_isspace(line[0]) == 0 && list->aParsing < 8)
+		return (-1);
+	return (0);
 }
 
 int		ft_whatsinmap(t_list *list, char *line)
@@ -101,7 +79,7 @@ int		ft_whatsinmap(t_list *list, char *line)
 	tmp = NULL;
 	if (line[0] == '\0' && list->aParsing > 8)
 	{
-		write(1, "Error\nError in Map\n", 19);
+		write(1, "Error\nError in map 3\n", 21);
 		return (-1);
 	}
 	if (line[0] != '\0' && list->aParsing == 8)
@@ -124,8 +102,6 @@ int		ft_parsing(char *file, t_list *list)
 	char	*line;
 
 	line = NULL;
-	list->aParsing = 0;
-	list->bParsing = 0;
 	if ((fd = open(file, O_RDONLY)) <= 0)
 	{
 		write(1, "Error\nUnopened File\n", 20);
@@ -136,7 +112,8 @@ int		ft_parsing(char *file, t_list *list)
 		if (ft_whatsinmap(list, line) == -1)
 			return (-1);
 		if (line[0] != '\0')
-			ft_whatstheconf(list, line);
+			if (ft_whatstheconf(list, line) == -1)
+				return (-1);
 		free(line);
 	}
 	close(fd);

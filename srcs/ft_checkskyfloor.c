@@ -53,7 +53,6 @@ int    ft_hexa(t_list *list)
 
 int     ft_checkSkyFloor(t_list *list)
 {
-    //maybe ajouter one->fo et one->co chez Alessio
     if (ft_checkSkyFloor2(list, list->textF) == -1)
         return (-1);
     list->color_floor = ft_hexa(list);

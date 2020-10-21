@@ -16,6 +16,8 @@ void	ft_init_list4(t_list *list)
 {
 	list->texHeight = 0;
 	list->texWidth = 0;
+	list->aParsing = 0;
+	list->bParsing = 0;
 }
 
 void	ft_init_list3(t_list *list)
