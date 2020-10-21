@@ -67,7 +67,7 @@ int		ft_whatstheconf(t_list *list, char *line)
 		if (line[1] == ' ')
 			return (ft_text_Sprite(list, line));
 	}
-	if (ft_isspace(line[0]) == 0 && list->aParsing < 8)
+	if (list->aParsing < 8)
 		return (-1);
 	return (0);
 }
