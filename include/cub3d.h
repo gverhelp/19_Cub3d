@@ -124,6 +124,7 @@ typedef struct	s_list
 	int			stripe;
 }				t_list;
 
+int				ft_start(t_list *list);
 int				ft_raycasting(t_list *list);
 void			ft_readKeys(t_list *list);
 void			ft_raycast(t_list *list, int a);
@@ -198,5 +199,8 @@ void			ft_sort_sprite(t_list *list);
 void			ft_calculate_draw_start_end(t_list *list);
 void        	ft_verline_sprites(t_list *list);
 void			ft_write_sprites(t_list *list);
+int				ft_bmp(t_list *list);
+int				ft_bmp2(t_list *list);
+void			ft_create_header(int fd, t_list *list, int file_size);
 
 #endif

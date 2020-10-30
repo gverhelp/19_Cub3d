@@ -39,16 +39,16 @@ void	ft_keyboard3(int keycode, t_list *list)
 	if (keycode == 2) //straff vers la droite avec D
 	{
 		if (list->map[(int)(list->posY + list->dirX * 0.5)][(int)list->posX] != '1')
-			list->posY += list->dirX * list->movespeed; //0.4
+			list->posY += list->dirX * list->movespeed;
 		if (list->map[(int)list->posY][(int)(list->posX - list->dirY * 0.5)] != '1')
-			list->posX -= list->dirY * list->movespeed; //0.4
+			list->posX -= list->dirY * list->movespeed;
 	}
 	if (keycode == 0) //straff vers la gauche avec Q
 	{
 		if (list->map[(int)(list->posY - list->dirX * 0.5)][(int)list->posX] != '1')
-			list->posY -= list->dirX * list->movespeed; //0.4
+			list->posY -= list->dirX * list->movespeed;
 		if (list->map[(int)list->posY][(int)(list->posX + list->dirY * 0.5)] != '1')
-			list->posX += list->dirY * list->movespeed; //0.4
+			list->posX += list->dirY * list->movespeed;
 	}
 	ft_keyboard4(keycode, list);
 }

@@ -35,6 +35,7 @@ SRCS = srcs/main.c \
 	srcs/ft_parsing_sprites.c \
 	srcs/ft_sprites.c \
 	srcs/ft_sprites2.c \
+	srcs/ft_bmp.c \
 
 OBJS = ${SRCS:.c=.o}
 INCLUDE = cube3d.h

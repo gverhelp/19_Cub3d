@@ -90,7 +90,10 @@ int		ft_raycasting(t_list *list)
 
     a = 0;
 	if (!(list->zbuffer = malloc(sizeof(int *) * list->screenWidth + 1)))
+	{
+		write(1, "Error\nzbuffer malloc did not work\n", 34);
 		return (-1);
+	}
     while (a < list->screenWidth)
     {
         ft_raycast(list, a);
@@ -102,7 +105,6 @@ int		ft_raycasting(t_list *list)
 		list->zbuffer[a] = list->perpWallDist;
         a++;
     }
-    //+ save (voir chez Alessio)
 	ft_raycasting_sprites(list);
 	mlx_put_image_to_window(list->mlx, list->mlx_win, list->img, 0, 0);
 	free(list->zbuffer);
