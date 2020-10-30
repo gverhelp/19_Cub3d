@@ -50,7 +50,8 @@ int		main(int argc, char **argv)
 	list.mlx_win = mlx_new_window(list.mlx, list.screenWidth, list.screenHeight, "Cub3d");
 	list.img = mlx_new_image(list.mlx, list.screenWidth, list.screenHeight);
 	list.addr = (int*)mlx_get_data_addr(list.img, &list.bits_per_pixel, &list.line_length, &list.endian);
-	ft_raycasting(&list);
+	if (ft_raycasting(&list) == -1)
+		return (-1);
 	ft_readKeys(&list);
 	mlx_loop(list.mlx);
 	return (0);

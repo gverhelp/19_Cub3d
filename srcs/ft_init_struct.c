@@ -12,12 +12,42 @@
 
 #include "../include/cub3d.h"
 
+void	ft_init_list5(t_list *list)
+{
+	list->imgEA = 0;
+	list->addrEA = 0;
+	list->imgWE = 0;
+	list->addrWE = 0;
+	list->imgSO = 0;
+	list->addrSO = 0;
+}
+
 void	ft_init_list4(t_list *list)
 {
 	list->texHeight = 0;
 	list->texWidth = 0;
 	list->aParsing = 0;
 	list->bParsing = 0;
+	list->spritesX = 0;
+	list->spritesY = 0;
+	list->nbSprites = 0;
+	list->spriteDistance = 0;
+	list->sprtX = 0;
+	list->sprtY = 0;
+	list->invdet = 0;
+	list->transformX = 0;
+	list->transformY = 0;
+	list->spriteScreenX = 0;
+	list->spriteHeight = 0;
+	list->spriteWidth = 0;
+	list->drawStartX = 0;
+	list->drawStartY = 0;
+	list->drawEndX = 0;
+	list->drawEndY = 0;
+	list->stripe = 0;
+	list->imgSprite = 0;
+	list->addrSprite = 0;
+	ft_init_list5(list);
 }
 
 void	ft_init_list3(t_list *list)

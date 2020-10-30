@@ -16,7 +16,6 @@ void     ft_addSpace(t_list *list)
     int c;
 
     a = 1;
-    b = 0;
     c = 0;
     while (list->map && list->map[a])
     {

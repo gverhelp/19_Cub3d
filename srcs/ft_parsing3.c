@@ -25,6 +25,11 @@ int     ft_checkTxTError2(t_list *list)
         write(1, "Error\nError in textures\n", 24);
         return (-1);
     }
+    if (ft_parsingSprites(list) == -1)
+    {
+        write(1, "Error\nError in sprites\n", 23);
+        return (-1);
+    }
     return (0);
 }
 
@@ -71,7 +76,8 @@ int     ft_map(t_list *list)
 
 int     ft_check(t_list *list)
 {
-    list->mlx = mlx_init();
+    if (!(list->mlx = mlx_init()))
+        return (-1);
     if (!list->size)
         return (-1);
     if (list->bParsing < 3)

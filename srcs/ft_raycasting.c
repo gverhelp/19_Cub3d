@@ -84,13 +84,13 @@ void    ft_raycast(t_list *list, int a)
 	list->hit = 0; //what direction to stop in x or y-direction (either +1 or -1)
 }
 
-void     ft_raycasting(t_list *list)
+int		ft_raycasting(t_list *list)
 {
     int a;
 
     a = 0;
- //   if (!(list->zbuffer = malloc(sizeof(int *) * list->screenWidth + 1)))
- //       return (-1);
+	if (!(list->zbuffer = malloc(sizeof(int *) * list->screenWidth + 1)))
+		return (-1);
     while (a < list->screenWidth)
     {
         ft_raycast(list, a);
@@ -99,9 +99,12 @@ void     ft_raycasting(t_list *list)
 		ft_raycast4(list);
 		ft_wallTexture(list);
 		ft_verline(list, a);
+		list->zbuffer[a] = list->perpWallDist;
         a++;
     }
-    //sprites + save (voir chez Alessio)
+    //+ save (voir chez Alessio)
+	ft_raycasting_sprites(list);
 	mlx_put_image_to_window(list->mlx, list->mlx_win, list->img, 0, 0);
-  //  free(list->zbuffer);
+	free(list->zbuffer);
+	return (0);
 }
