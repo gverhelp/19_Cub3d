@@ -118,10 +118,6 @@ void	ft_init_list(t_list *list)
 	list->drawEnd = 0;
 	list->color_floor = 0;
 	list->color_sky = 0;
-	list->color_wall_w = 0;
-	list->color_wall_e = 0;
-	list->color_wall_s = 0;
-	list->color_wall_n = 0;
 	list->savebmp = 0;
 	list->size = ft_strdup("");
 	list->textNO = ft_strdup("");

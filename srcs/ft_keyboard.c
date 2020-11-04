@@ -29,8 +29,8 @@ void	ft_keyboard4(int keycode, t_list *list)
 	}
 	if (keycode == 53)
 	{
-	//rajouter exit_end
-		exit(1);
+		ft_exit(list);
+		exit(0);
 	}
 }
 
@@ -94,7 +94,8 @@ int		ft_keyboard(int keycode, t_list *list)
 			list->planeY * cos(list->rotspeed);
 	}
 	ft_keyboard2(keycode, list);
-	ft_raycasting(list);
+	if (ft_raycasting(list) == -1)
+		return (ft_exit(list));
 	mlx_put_image_to_window(list->mlx, list->mlx_win, list->img, 0, 0);
 	return (0);
 }

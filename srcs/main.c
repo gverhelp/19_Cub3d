@@ -59,20 +59,21 @@ int		main(int argc, char **argv)
 
 	ft_init_list(&list);
 	if (ft_checkerror(argc, argv, &list) == -1)
-		return (-1);
+		return (ft_exit(&list));
 	if (argc == 2)
 	{
 		if (ft_start(&list) == -1)
-			return (-1);
+			return (ft_exit(&list));
 		ft_readKeys(&list);
 		mlx_loop(list.mlx);
 	}
 	if ((argc == 3) && (!ft_strncmp(argv[2], "--save\0", 7)))
 	{
 		if (ft_start(&list) == -1)
-			return (-1);
+			return (ft_exit(&list));
 		if (ft_bmp(&list) == -1)
-			return (-1);
+			return (ft_exit(&list));
 	}
+	ft_exit(&list);
 	return (0);
 }

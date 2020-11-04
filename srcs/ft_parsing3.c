@@ -68,7 +68,6 @@ int     ft_map(t_list *list)
     tmp = list->tmpmap;
     list->map = ft_split(tmp, '\n');
     free(tmp);
-    //rajouter newmap? (voir alessio)
     if (ft_checkTxTError(list) == -1)
         return (-1);
     return (1);

@@ -77,7 +77,7 @@ int     ft_checkErrorPos(t_list *list, int a, int b)
     }
     else
         return (-1);
-    return (1);
+    return (0);
 }
 
 int     ft_checkpos(t_list *list)

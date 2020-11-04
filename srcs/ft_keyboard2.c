@@ -3,6 +3,6 @@
 int     ft_esc(t_list *list)
 {
     (void)list;
-    exit(1);
+    exit(0);
     return (0);
 }

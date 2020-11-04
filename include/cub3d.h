@@ -41,10 +41,6 @@ typedef struct	s_list
 	int			drawEnd;
 	int			color_floor;
 	int			color_sky;
-	int			color_wall_w;
-	int			color_wall_e;
-	int			color_wall_s;
-	int			color_wall_n;
 	int			savebmp;
 	int			aParsing;
 	int			bParsing;
@@ -202,5 +198,10 @@ void			ft_write_sprites(t_list *list);
 int				ft_bmp(t_list *list);
 int				ft_bmp2(t_list *list);
 void			ft_create_header(int fd, t_list *list, int file_size);
+int     		ft_exit(t_list *list);
+void    		ft_free_data(t_list *list);
+void    		ft_free_data2(t_list *list);
+void    		ft_free_map(t_list *list);
+void    		ft_free_win(t_list *list);
 
 #endif
