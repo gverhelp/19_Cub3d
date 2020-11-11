@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_checktextures.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/11 18:34:13 by gverhelp          #+#    #+#             */
+/*   Updated: 2020/11/11 20:29:23 by gverhelp         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
-int	ft_textNO(t_list *list)
+int	ft_textno(t_list *list)
 {
 	int		a;
 
 	a = 0;
-	if (list->textNO[a] == 'N' && list->textNO[a + 1] == 'O')
+	if (list->textno[a] == 'N' && list->textno[a + 1] == 'O')
 		a += 2;
-	while (list->textNO[a] != '\0' && list->textNO[a] == ' ')
+	while (list->textno[a] != '\0' && list->textno[a] == ' ')
 		a++;
-	if (!(list->imgNO = mlx_xpm_file_to_image(list->mlx,
-		&list->textNO[a], &list->texWidth, &list->texHeight)))
+	if (!(list->imgno = mlx_xpm_file_to_image(list->mlx,
+					&list->textno[a], &list->texwidth, &list->texheight)))
 	{
 		write(1, "Error\nPath texture\n", 19);
 		return (-1);
@@ -18,17 +30,17 @@ int	ft_textNO(t_list *list)
 	return (0);
 }
 
-int	ft_textSO(t_list *list)
+int	ft_textso(t_list *list)
 {
 	int		a;
 
 	a = 0;
-	if (list->textSO[a] == 'S' && list->textSO[a + 1] == 'O')
+	if (list->textso[a] == 'S' && list->textso[a + 1] == 'O')
 		a += 2;
-	while (list->textSO[a] != '\0' && list->textSO[a] == ' ')
+	while (list->textso[a] != '\0' && list->textso[a] == ' ')
 		a++;
-	if (!(list->imgSO = mlx_xpm_file_to_image(list->mlx,
-		&list->textSO[a], &list->texWidth, &list->texHeight)))
+	if (!(list->imgso = mlx_xpm_file_to_image(list->mlx,
+					&list->textso[a], &list->texwidth, &list->texheight)))
 	{
 		write(1, "Error\nPath texture\n", 19);
 		return (-1);
@@ -36,17 +48,17 @@ int	ft_textSO(t_list *list)
 	return (1);
 }
 
-int	ft_textWE(t_list *list)
+int	ft_textwe(t_list *list)
 {
 	int		a;
 
 	a = 0;
-	if (list->textWE[a] == 'W' && list->textWE[a + 1] == 'E')
+	if (list->textwe[a] == 'W' && list->textwe[a + 1] == 'E')
 		a += 2;
-	while (list->textWE[a] != '\0' && list->textWE[a] == ' ')
+	while (list->textwe[a] != '\0' && list->textwe[a] == ' ')
 		a++;
-	if (!(list->imgWE = mlx_xpm_file_to_image(list->mlx,
-		&list->textWE[a], &list->texWidth, &list->texHeight)))
+	if (!(list->imgwe = mlx_xpm_file_to_image(list->mlx,
+					&list->textwe[a], &list->texwidth, &list->texheight)))
 	{
 		write(1, "Error\nPath texture\n", 19);
 		return (-1);
@@ -54,17 +66,17 @@ int	ft_textWE(t_list *list)
 	return (1);
 }
 
-int	ft_textEA(t_list *list)
+int	ft_textea(t_list *list)
 {
 	int		a;
 
 	a = 0;
-	if (list->textEA[a] == 'E' && list->textEA[a + 1] == 'A')
+	if (list->textea[a] == 'E' && list->textea[a + 1] == 'A')
 		a += 2;
-	while (list->textEA[a] != '\0' && list->textEA[a] == ' ')
+	while (list->textea[a] != '\0' && list->textea[a] == ' ')
 		a++;
-	if (!(list->imgEA = mlx_xpm_file_to_image(list->mlx,
-		&list->textEA[a], &list->texWidth, &list->texHeight)))
+	if (!(list->imgea = mlx_xpm_file_to_image(list->mlx,
+					&list->textea[a], &list->texwidth, &list->texheight)))
 	{
 		write(1, "Error\nPath texture\n", 19);
 		return (-1);
@@ -72,22 +84,22 @@ int	ft_textEA(t_list *list)
 	return (1);
 }
 
-int     ft_checkTextures(t_list *list)
+int	ft_checktextures(t_list *list)
 {
-	if (list->textNO[2] != ' ' || ft_textNO(list) == -1)
+	if (list->textno[2] != ' ' || ft_textno(list) == -1)
 		return (-1);
-	if (list->textSO[2] != ' ' || ft_textSO(list) == -1)
+	if (list->textso[2] != ' ' || ft_textso(list) == -1)
 	{
-		mlx_destroy_image(list->mlx, list->imgNO);
+		mlx_destroy_image(list->mlx, list->imgno);
 		return (-1);
 	}
-	if (list->textWE[2] != ' ' || ft_textWE(list) == -1)
+	if (list->textwe[2] != ' ' || ft_textwe(list) == -1)
 	{
-		mlx_destroy_image(list->mlx, list->imgNO);
-		mlx_destroy_image(list->mlx, list->imgSO);
+		mlx_destroy_image(list->mlx, list->imgno);
+		mlx_destroy_image(list->mlx, list->imgso);
 		return (-1);
 	}
-	if (ft_checkTextures2(list) == -1)
+	if (ft_checktextures2(list) == -1)
 		return (-1);
 	return (1);
 }

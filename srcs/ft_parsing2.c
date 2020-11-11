@@ -1,84 +1,96 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/11 18:36:08 by gverhelp          #+#    #+#             */
+/*   Updated: 2020/11/11 20:43:08 by gverhelp         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
-int     ft_text_WE(t_list *list, char *line)
+int	ft_text_we(t_list *list, char *line)
 {
-    char	*tmp;
+	char	*tmp;
 
 	tmp = NULL;
-    if (list->textWE[0] == '\0')
+	if (list->textwe[0] == '\0')
 	{
-		tmp = list->textWE;
-		list->textWE = ft_strjoin(list->textWE, line);
+		tmp = list->textwe;
+		list->textwe = ft_strjoin(list->textwe, line);
 		free(tmp);
-		list->aParsing++;
+		list->aparsing++;
 		return (0);
 	}
 	else
 		return (-1);
 }
 
-int     ft_text_EA(t_list *list, char *line)
+int	ft_text_ea(t_list *list, char *line)
 {
-    char	*tmp;
+	char	*tmp;
 
 	tmp = NULL;
-    if (list->textEA[0] == '\0')
+	if (list->textea[0] == '\0')
 	{
-		tmp = list->textEA;
-		list->textEA = ft_strjoin(list->textEA, line);
+		tmp = list->textea;
+		list->textea = ft_strjoin(list->textea, line);
 		free(tmp);
-		list->aParsing++;
+		list->aparsing++;
 		return (0);
 	}
 	else
 		return (-1);
 }
 
-int     ft_text_F(t_list *list, char *line)
+int	ft_text_f(t_list *list, char *line)
 {
-    char	*tmp;
+	char	*tmp;
 
 	tmp = NULL;
-    if (list->textF[0] == '\0')
+	if (list->textf[0] == '\0')
 	{
-		tmp = list->textF;
-		list->textF = ft_strjoin(list->textF, line);
+		tmp = list->textf;
+		list->textf = ft_strjoin(list->textf, line);
 		free(tmp);
-		list->aParsing++;
+		list->aparsing++;
 		return (0);
 	}
 	else
 		return (-1);
 }
 
-int     ft_text_C(t_list *list, char *line)
+int	ft_text_c(t_list *list, char *line)
 {
-    char	*tmp;
+	char	*tmp;
 
 	tmp = NULL;
-    if (list->textC[0] == '\0')
+	if (list->textc[0] == '\0')
 	{
-		tmp = list->textC;
-		list->textC = ft_strjoin(list->textC, line);
+		tmp = list->textc;
+		list->textc = ft_strjoin(list->textc, line);
 		free(tmp);
-		list->aParsing++;
+		list->aparsing++;
 		return (0);
 	}
 	else
 		return (-1);
 }
 
-int     ft_text_SO(t_list *list, char *line)
+int	ft_text_so(t_list *list, char *line)
 {
-    char	*tmp;
+	char	*tmp;
 
 	tmp = NULL;
-    if (list->textSO[0] == '\0')
+	if (list->textso[0] == '\0')
 	{
-		tmp = list->textSO;
-		list->textSO = ft_strjoin(list->textSO, line);	
-    	free(tmp);
-		list->aParsing++;
+		tmp = list->textso;
+		list->textso = ft_strjoin(list->textso, line);
+		free(tmp);
+		list->aparsing++;
 		return (0);
 	}
 	else
