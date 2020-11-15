@@ -12,11 +12,15 @@
 
 #include "../include/cub3d.h"
 
-int	ft_checkskyfloor3(t_list *list, char *str, int a)
+int	ft_checkskyfloor4(t_list *list, char *str, int a)
 {
 	while (ft_isdigit(str[a]))
 		a++;
+	while (str[a] == ' ')
+		a++;
 	if (str[a] == ',')
+		a++;
+	while (str[a] == ' ')
 		a++;
 	if ((!ft_isdigit(str[a])) ||
 			((str[a] == '0' && ft_isdigit(str[a + 1]))))
@@ -28,6 +32,17 @@ int	ft_checkskyfloor3(t_list *list, char *str, int a)
 		return (-1);
 	if (list->r < 0 || list->r > 255 || list->g < 0 ||
 			list->g > 255 || list->b < 0 || list->b > 255)
+		return (-1);
+	return (0);
+}
+
+int	ft_checkskyfloor3(t_list *list, char *str, int a)
+{
+	if ((!ft_isdigit(str[a])) ||
+		((str[a] == '0' && ft_isdigit(str[a + 1]))))
+		return (-1);
+	list->g = ft_atoi(&str[a]);
+	if (ft_checkskyfloor4(list, str, a) == -1)
 		return (-1);
 	return (0);
 }
@@ -47,12 +62,12 @@ int	ft_checkskyfloor2(t_list *list, char *str)
 	list->r = ft_atoi(&str[a]);
 	while (ft_isdigit(str[a]))
 		a++;
+	while (str[a] == ' ')
+		a++;
 	if (str[a] == ',')
 		a++;
-	if ((!ft_isdigit(str[a])) ||
-			((str[a] == '0' && ft_isdigit(str[a + 1]))))
-		return (-1);
-	list->g = ft_atoi(&str[a]);
+	while (str[a] == ' ')
+		a++;
 	if (ft_checkskyfloor3(list, str, a) == -1)
 		return (-1);
 	return (0);

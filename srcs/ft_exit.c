@@ -6,7 +6,7 @@
 /*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:34:34 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/11/11 20:32:13 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/11/14 16:51:31 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_free_data(t_list *list)
 	ft_free_data2(list);
 }
 
-int	ft_exit(t_list *list)
+int		ft_exit(t_list *list)
 {
 	ft_free_map(list);
 	ft_free_data(list);

@@ -6,7 +6,7 @@
 /*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:36:39 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/11/11 20:48:52 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/11/14 16:54:46 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 void	ft_raycast4(t_list *list)
 {
-	//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect)
 	if (list->side == 0)
 		list->perpwalldist = (list->mapx - list->posx +
 		(1 - list->stepx) / 2) / list->raydirx;
 	else
 		list->perpwalldist = (list->mapy - list->posy +
 		(1 - list->stepy) / 2) / list->raydiry;
-	//Calculate height ofl ine to draw on screen
 	list->lineheight = (int)(list->screenheight / list->perpwalldist);
-	//Calculate lowest and highest pixel to fill in current stripe
 	list->drawstart = -list->lineheight / 2 + list->screenheight / 2;
 	if (list->drawstart < 0)
 		list->drawstart = 0;
@@ -34,7 +31,6 @@ void	ft_raycast4(t_list *list)
 
 void	ft_raycast3(t_list *list)
 {
-	//jump to next map square, OR in x-direction, OR, in y-direction
 	while (list->hit == 0)
 	{
 		if (list->sidedistx < list->sidedisty)
@@ -49,7 +45,6 @@ void	ft_raycast3(t_list *list)
 			list->mapy += list->stepy;
 			list->side = 1;
 		}
-		//Check if ray has hit a wall
 		if (list->map[list->mapy][list->mapx] == '1')
 			list->hit = 1;
 	}
@@ -57,7 +52,6 @@ void	ft_raycast3(t_list *list)
 
 void	ft_raycast2(t_list *list)
 {
-	//calculate step and initial sideDist
 	if (list->raydirx < 0)
 	{
 		list->stepx = -1;
@@ -82,23 +76,17 @@ void	ft_raycast2(t_list *list)
 
 void	ft_raycast(t_list *list, int a)
 {
-	//calculate ray position and direction
-	list->camerax = 2 * a / (double)list->screenwidth - 1; //x-coordinate in camera space
+	list->camerax = 2 * a / (double)list->screenwidth - 1;
 	list->raydirx = list->dirx + list->planex * list->camerax;
 	list->raydiry = list->diry + list->planey * list->camerax;
-
-	//which box of the map we're in
 	list->mapx = (int)list->posx;
 	list->mapy = (int)list->posy;
-
-	//sideDist are the length of ray from current position to next x or y-side
-	//length of ray from one x or y-side to next x or y-side
 	list->deltadistx = fabs(1 / list->raydirx);
 	list->deltadisty = fabs(1 / list->raydiry);
-	list->hit = 0; //what direction to stop in x or y-direction (either +1 or -1)
+	list->hit = 0;
 }
 
-int	ft_raycasting(t_list *list)
+int		ft_raycasting(t_list *list)
 {
 	int a;
 

@@ -6,7 +6,7 @@
 /*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:33:50 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/11/11 19:43:55 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/11/14 16:50:48 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,11 @@ void	ft_checkmaxminscreen(t_list *list)
 {
 	if (list->screenwidth > 1680)
 		list->screenwidth = 1680;
-	//    if (list->screenwidth < 720)
-	//        list->screenwidth = 720;
 	if (list->screenheight > 1050)
 		list->screenheight = 1050;
-	//    if (list->screenheight < 480)
-	//       list->screenheight = 480;
 }
 
-int	ft_checkscreen(t_list *list)
+int		ft_checkscreen(t_list *list)
 {
 	int a;
 

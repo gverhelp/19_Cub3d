@@ -6,6 +6,7 @@ WE ./textures/colorstone.xpm
 EA ./textures/wood.xpm
 
 S ./textures/barrel.xpm
+
 C 0,225,243
 F 237,127,16
 

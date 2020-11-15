@@ -77,13 +77,12 @@ int	ft_whatsinmap(t_list *list, char *line)
 	char	*tmp;
 
 	tmp = NULL;
-	if (line[0] == '\0' && list->aparsing > 8)
+	if (list->aparsing == 8)
 	{
-		write(1, "Error\nError in map 3\n", 21);
-		return (-1);
-	}
-	if (line[0] != '\0' && list->aparsing == 8)
-	{
+		if (list->bparsing == 0 && line[0] == '\0')
+			return (0);
+		if (list->bparsing != 0 && line[0] == '\0')
+			return (-1);
 		tmp = list->tmpmap;
 		list->tmpmap = ft_strjoin(tmp, line);
 		free(tmp);
@@ -91,9 +90,9 @@ int	ft_whatsinmap(t_list *list, char *line)
 		list->tmpmap = ft_strjoin(tmp, "\n");
 		free(tmp);
 		list->bparsing++;
-		return (1);
+		return (0);
 	}
-	return (1);
+	return (0);
 }
 
 int	ft_parsing(char *file, t_list *list)

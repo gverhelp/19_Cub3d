@@ -6,7 +6,7 @@
 /*   By: gverhelp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 17:38:01 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/11/11 21:00:21 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/11/14 16:49:10 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_create_header(int fd, t_list *list, int file_size)
 	write(fd, header, 54);
 }
 
-int	ft_bmp2(t_list *list)
+int		ft_bmp2(t_list *list)
 {
 	int	fd;
 	int	file_size;
@@ -58,7 +58,7 @@ int	ft_bmp2(t_list *list)
 	return (0);
 }
 
-int	ft_bmp(t_list *list)
+int		ft_bmp(t_list *list)
 {
 	if (ft_bmp2(list) == -1)
 	{

@@ -6,13 +6,13 @@
 /*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:36:49 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/11/11 20:49:39 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/11/14 16:54:58 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	ft_walltexture(t_list *list)
+int		ft_walltexture(t_list *list)
 {
 	if (list->side == 0)
 		list->wallx = list->posy + list->perpwalldist * list->raydiry;

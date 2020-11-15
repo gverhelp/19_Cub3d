@@ -6,13 +6,13 @@
 /*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:34:22 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/11/11 20:31:09 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/11/14 16:51:14 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	ft_textsprite(t_list *list)
+int		ft_textsprite(t_list *list)
 {
 	int		a;
 
@@ -44,7 +44,7 @@ void	ft_checktextures3(t_list *list)
 		&list->bits_per_pixel, &list->line_length, &list->endian);
 }
 
-int	ft_checktextures2(t_list *list)
+int		ft_checktextures2(t_list *list)
 {
 	if (list->textea[2] != ' ' || ft_textea(list) == -1)
 	{

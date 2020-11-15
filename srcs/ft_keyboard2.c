@@ -12,6 +12,16 @@
 
 #include "../include/cub3d.h"
 
+int	ft_visible(t_list *list)
+{
+	if (ft_raycasting(list) == -1)
+	{
+		write(1, "Error\nError raycasting (visi)\n", 30);
+		return (-1);
+	}
+	return (0);
+}
+
 int	ft_esc(t_list *list)
 {
 	(void)list;

@@ -6,13 +6,13 @@
 /*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:36:27 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/11/11 20:46:16 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/11/14 16:54:32 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	ft_nbsprites(t_list *list)
+int		ft_nbsprites(t_list *list)
 {
 	int	a;
 	int	b;
@@ -63,7 +63,7 @@ void	ft_get_sprites(t_list *list)
 	list->spritesy[c] = '\0';
 }
 
-int	ft_parsingsprites(t_list *list)
+int		ft_parsingsprites(t_list *list)
 {
 	if (ft_nbsprites(list) == -1)
 		return (-1);

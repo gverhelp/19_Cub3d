@@ -6,13 +6,13 @@
 /*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:33:42 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/11/11 19:42:22 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/11/14 16:50:25 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	ft_checkspace(t_list *list, int a, int b)
+int		ft_checkspace(t_list *list, int a, int b)
 {
 	if (list->map[a][b - 1] == ' ')
 		return (-1);
@@ -78,7 +78,7 @@ void	ft_dataposition(t_list *list, int a, int b)
 	ft_dataposition2(list, a, b);
 }
 
-int	ft_checkerrorpos(t_list *list, int a, int b)
+int		ft_checkerrorpos(t_list *list, int a, int b)
 {
 	if ((list->comptpos == 0) && (list->map[a][b] == 'N' ||
 		list->map[a][b] == 'S' || list->map[a][b] == 'E' ||
@@ -93,7 +93,7 @@ int	ft_checkerrorpos(t_list *list, int a, int b)
 	return (0);
 }
 
-int	ft_checkpos(t_list *list)
+int		ft_checkpos(t_list *list)
 {
 	int a;
 	int b;

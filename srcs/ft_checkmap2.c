@@ -6,7 +6,7 @@
 /*   By: gverhelp <marvin@42.ff>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 18:33:20 by gverhelp          #+#    #+#             */
-/*   Updated: 2020/11/11 19:39:20 by gverhelp         ###   ########.fr       */
+/*   Updated: 2020/11/14 16:49:41 by gverhelp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_addspace(t_list *list)
 	}
 }
 
-int	ft_checkfirstcolumn(t_list *list)
+int		ft_checkfirstcolumn(t_list *list)
 {
 	int	a;
 	int	b;
@@ -63,7 +63,7 @@ int	ft_checkfirstcolumn(t_list *list)
 	return (0);
 }
 
-int	ft_checklastcolumn(t_list *list)
+int		ft_checklastcolumn(t_list *list)
 {
 	int	a;
 	int	b;
@@ -80,7 +80,7 @@ int	ft_checklastcolumn(t_list *list)
 	return (0);
 }
 
-int	ft_checkifhole(t_list *list)
+int		ft_checkifhole(t_list *list)
 {
 	int	a;
 	int	b;
